@@ -100,6 +100,7 @@ In R, one works with packages each adding numerous functionalities to the core f
     library(rtweet)
     library(tidyverse)
     library(lubridate)
+    library(jsonlite)
 
 
 In the following we start of with some data processing before moving on
