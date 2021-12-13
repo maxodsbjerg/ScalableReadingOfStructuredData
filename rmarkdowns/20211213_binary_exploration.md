@@ -54,6 +54,8 @@ dataset one row = one tweet:
       count(verified) %>% 
       mutate(total = nrow(sesamestreet_data))
 
+<!-- tsk -->
+
     ## # A tibble: 2 x 3
     ##   verified     n total
     ## * <lgl>    <int> <int>
