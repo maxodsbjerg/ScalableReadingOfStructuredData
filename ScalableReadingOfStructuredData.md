@@ -409,7 +409,12 @@ which creates three bar charts for each type of interaction:
 
 
 # Step 3: Reproducable and Systematic Selection for Close Reading
-Hvorfor er det egentlig at det vigtigt? 
+One of the great advantages of combining close and distant reading is the possibility it presents for making a systematic and reproduceable selection of datapoints for close reading. When you have explored your dataset with two different kinds of distant readings in step 1 and step 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to further unpack and explore in depth the interesting tendencies of your data and chosen phenomena or other interest. 
+
+How many datapoints you choose to close read will dependent on what phenomena you are researching and how much time you have, and how complex the data is (for instance, analysing individual artwork might be much more time consuming than reading individual tweets—but it of course depends on your purpose). It is, therefore, important that you are systematical in your selection of datapoints in order to ensure compliance with your research questions.  
+
+In the example related to step 2 above, we saw how tweets produced by verified twitter accounts have a significantly higher interaction count than tweets made by non-verified accounts. Knowing that a tweet is maximum 140 characters long and understanding the relation between the two types of tweets’ interaction level, it is for this close reading of tweets suitable to extract the top 20 most liked tweets by both verified and non-verified users for a systematically limited close reading.  
+
 
 ## Example of Reproducable and Systematic Selection for Close Reading: Twitter data
 To examine original tweets only, we start by filtering away all the
