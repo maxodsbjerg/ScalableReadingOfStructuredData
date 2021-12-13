@@ -6,13 +6,13 @@ output: html_document
 ---
 # Filtering for original tweets and observing the minimum favorite_count value for the top 20
 
-As we are only interested in original tweets, we start by filtering away all the tweets that are "retweets". 
+To examine original tweets only, we start by filtering away all the tweets that are "retweets". 
 
 Viewing the data *sesamestreet_data* in the Global Environment, you see that the column is_retweet indicates whether a tweet is a retweet by the values TRUE or FALSE. You are therefore able to use the `filter`-function to retain all rows stating that the tweet is not a retweet.
 
 You then arrange the remaining tweets by the tweets' favorite count which is found in the favorite_count column. 
 
-Both the `filter`-function and the `arrange`-function come from the dplyr package which is part of the tidyverse. 
+Both the `filter`-function and the `arrange`-function come from the dplyr package which is part of tidyverse. 
 
 ```{r}
 sesamestreet_data %>% 
