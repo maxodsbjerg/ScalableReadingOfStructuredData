@@ -34,7 +34,7 @@ has “FALSE” - then it isn’t.
     sesamestreet_data %>% 
       count(verified)
 
-
+<!-- tsk -->
 
     ## # A tibble: 2 x 2
     ##   verified     n
