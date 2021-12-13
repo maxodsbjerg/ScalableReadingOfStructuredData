@@ -58,7 +58,7 @@ Combining these two tracks we show how scalable reading can be used to work with
 # Lesson Aims
 * Setting up a workflow where exploratory, distant reading is used as a context that guides the selection of data for close reading 
 * Employ exploratory analyses to find patterns in well-structured data
-* Apply and chain basic filtering and arranging functions in R (if you have no or little knowledge of R, we recommend looking at this lesson before you being)
+* Apply and chain basic filtering and arranging functions in R (if you have no or little knowledge of R, we recommend looking at the [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R))
 
 # Gateway for newcomers: bridging traditional and computational methods 
 The combination of close and distant reading we suggest in this lesson is meant as a way for newcomers to adjust to the kind of computational thinking embedded in digital methods. When connecting distant reading of large datasets (an approach usually new to humanities and social science scholars) to close reading of single data points, we bridge between unfamiliar and familiar methods. In our experience, the scalable reading where the analysis of the entire data sets represents a set of contexts for the close reading eases the difficulties newcomers might experience in asking questions of their material which can be solved using computational thinking. The reproducible way of selecting individual cases for closer inspection speaks, for instance, directly to central questions within the discipline of history and sociology regarding the representativity of case studies. 
