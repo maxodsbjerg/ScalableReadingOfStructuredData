@@ -1,0 +1,132 @@
+---
+title: "20211213_reproducable_and_systematic_selection"
+author: "Victor Harbo Johnston"
+date: "12/13/2021"
+output: html_document
+---
+# Filtering for original tweets and observing the minimum favorite_count value for the top 20
+
+As we are only interested in original tweets, we start by filtering away all the tweets that are "retweets". 
+
+Viewing our data *sesamestreet_data* in our Global Environment, we see that the column is_retweet indicates whether a tweet is a retweet by the values TRUE or FALSE. We are therefore able to use the `filter`-function to retain all rows stating that the tweet is not a retweet.
+
+We then arrange the remaining tweets by the tweets' favorite count which is found in the favorite_count column. 
+
+Both the `filter`-function and the `arrange`-function come from the dplyr package which is part of the tidyverse. 
+
+```{r}
+sesamestreet_data %>% 
+  filter(is_retweet == FALSE) %>% 
+  arrange(desc(favorite_count))
+```
+
+As we can see in our Global Environment, our data *sesamestreet_data* has a total of 2411 observations.
+After running our chunk of code, we can now read off our returned data.frame that there are 852 observations. Meaning 852 original tweets that are not marked as retweets.
+
+Looking at the column favorite_count, you can now observe that the top 20 most liked tweets all have a count that is above 50. These numbers are variables, that may change, if you choose to reproduce this example by yourself. Be sure to check these numbers.
+
+# Creating a new dataset of the top 20 most liked tweets (all accounts)
+
+As we now know that the minimum favorite_count value is 50, we add a second `filter`-function to our previous code chunk which retains all rows with a favorite_count value over 50. 
+
+As we have now captured  the top 20 most liked tweets, we can now create a new dataset called *sesamestreet_data_favorite_count_over_18*. 
+
+```{r}
+sesamestreet_data %>% 
+  filter(is_retweet == FALSE) %>%
+  filter(favorite_count > 50) %>% 
+  arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_50
+```
+
+
+# Step 5. Inspecting our new dafaframe (all)
+
+To create a quick overview of our new dataset, we use the `select`-function from the dplyr-package to isolate the variables we wish to inspect. In this case, we wish to isolate the columns favorite_count, screen_name, verified and text.
+
+We then arrange them after their favorite_count value by using the `arrange`-function. 
+
+```{r}
+sesamestreet_data_favorite_count_over_50 %>% 
+  select(favorite_count, screen_name, verified, text) %>% 
+  arrange(desc(favorite_count))
+```
+
+This code chunk returns a data.frame containing the previously stated values. It is therefore much easier to inspect, than looking though the whole dataset *sesamestreet_data_favorite_count_over_50* in our Global Environment.
+
+
+# Step 6. Exporting the new dataset in JSON file format
+
+To export our new dataset out of our R environment and save it as a JSON file, we use the `toJSON`-function from the jsonlite-package. 
+
+To make sure our data is stored as manageable and structured as possible, all of our close reading data files are dubbed with the same information:
+
+1. How many tweets/observations the data contains.
+2. What variable the data is arranged after.
+3. Whether the tweets are from all types of accounts or just the verified accounts.
+4. The year the data was produced.
+
+
+```{r}
+Top_20_liked_tweets <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_50)
+```
+
+After converting your data to a JSON file format, you are able to use the `write`-function from R basics to export the data and save it on your machine
+
+```{r}
+write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
+```
+
+
+# Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
+
+We now wish to see  the top 20 most liked tweets by the non-verified accounts.
+
+To do this, we follow the same workflow as before, but in our first code chunk, we include an extra `filter`-function from the dplyr-package which retains all rows with the value FALSE in the verified column, thereby removing all tweets from our data which have been produced by verified accounts. 
+
+```{r}
+sesamestreet_data %>% 
+  filter(is_retweet == FALSE) %>%
+  filter(verified == FALSE) %>% 
+  arrange(desc(favorite_count))
+```
+
+We observe in the returned data.frame that 809 of the total 2413 observations are not retweets AND are from non-verified accounts. 
+
+Looking again at the favorite_count column, we observe that the top 20 most commented tweets by non-verified accounts all have a count that is above 15. This time, 2 tweets share the 20th and 21th place. We therefore get the top 21 most liked tweets for this analysis.
+
+We can now filter tweets that have been liked more than 15 times, and arrange them from the most commented to the least, and create a new dataset in our Global Environment called *sesamestreet_data_favorite_count_over_15_non_verified*.
+
+```{r}
+sesamestreet_data %>% 
+  filter(is_retweet == FALSE) %>%
+  filter(verified == FALSE) %>%
+  filter(favorite_count > 8) %>% 
+  arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
+```
+
+
+# Inspecting our new dafaframe (non-verified)
+
+We once again create a quick overview of our new dataset by using the `select` and `arrange`-function as in before, and inspect our chosen values in the returned data.frame.
+
+```{r}
+sesamestreet_data_favorite_count_over_15_non_verified %>% 
+  select(favorite_count, screen_name, verified, text) %>% 
+  arrange(desc(favorite_count))
+```
+
+
+# Exporting the new dataset in JSON file format
+
+Once again we use the `toJSON`-function to export our data into a local JSON file.
+
+```{r}
+Top_21_liked_tweets_non_verified <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_15_non_verified)
+
+```
+
+```{r}
+write(Top_21_liked_tweets_non_verified, "Top_21_liked_tweets_non_verified.json")
+```
+
+You should now have two JSON files stored in your designated directory, ready to be loaded into another R Markdown for a close reading analysis, or you can inspect the text column of the datasets in your current R Global Environment.
