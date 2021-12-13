@@ -95,7 +95,7 @@ SKRIV KORT TEKST OM HVORFOR DET ER VIGTIGT sådan akademisk set
 
 ## Example of a dataset's timely dispersion: Twitter data
 
-Skriv tekst om at loade biblioteker.
+In R, one works with packages each adding numerous functionalities to the core functions of R. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this [Lesson](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the ´library()´ function as below:
 
     library(rtweet)
     library(tidyverse)
