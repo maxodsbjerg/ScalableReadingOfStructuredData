@@ -138,8 +138,7 @@ TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. T
       mutate(date = date(created_at)) %>% 
       count(date, has_sesame_ht)
       
- 
- 
+<!-- tsk -->
  
     ## # A tibble: 20 x 3
     ##    date       has_sesame_ht     n
@@ -224,6 +223,8 @@ has “FALSE” - then it isn’t.
     sesamestreet_data %>% 
       count(verified)
 
+<!-- tsk -->
+
     ## # A tibble: 2 x 2
     ##   verified     n
     ## * <lgl>    <int>
@@ -242,6 +243,8 @@ dataset one row = one tweet:
       count(verified) %>% 
       mutate(total = nrow(sesamestreet_data))
 
+<!-- tsk -->
+
     ## # A tibble: 2 x 3
     ##   verified     n total
     ## * <lgl>    <int> <int>
@@ -256,6 +259,8 @@ verified and non-verified tweets:
       count(verified) %>% 
       mutate(total = nrow(sesamestreet_data)) %>% 
       mutate(pct = (n / total) * 100)
+
+<!-- tsk -->
 
     ## # A tibble: 2 x 4
     ##   verified     n total   pct
@@ -299,6 +304,8 @@ non-verified and verified accounts.
     sesamestreet_data %>% 
       group_by(verified) %>% 
       summarise(gns = mean(favorite_count))
+
+<!-- tsk -->
 
     ## # A tibble: 2 x 2
     ##   verified     gns
