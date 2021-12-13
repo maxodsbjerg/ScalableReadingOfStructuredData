@@ -286,6 +286,7 @@ we now use the `geom_col-functions` in order to create columns. When you start w
 
 ## Means of different interaction count dispersed on the verified status in the sesammestreet dataset
 
+
 In the code below you group the dataset based on each tweets verified
 status. After using the grouping function all operations afterwards will
 be done groupwise. In other words all the tweets coming from non
@@ -301,7 +302,7 @@ non-verified and verified accounts.
     ## # A tibble: 2 x 2
     ##   verified     gns
     ## * <lgl>      <dbl>
-    ## 1 FALSE      0.889
+    ## 1 FALSE      0.892
     ## 2 TRUE     114.
 
 In this next step you add the result from above to a dataframe and with
@@ -313,48 +314,13 @@ a new column “interaction” where you specify that it is
       summarise(gns = mean(favorite_count)) %>% 
       mutate(interaction = "favorite_count")
 
-In the next step you calculate the means for retweets and reply
-following the same method as you did with the favorite count:
-
-    interactions %>% 
-      add_row(
-        sesamestreet_data %>% 
-          group_by(verified) %>% 
-          summarise(gns = mean(retweet_count), .groups = "drop") %>% 
-          mutate(interaction = "retweet_count")) %>% 
-      add_row(
-        sesamestreet_data %>% 
-          group_by(verified) %>% 
-          summarise(gns = mean(reply_count), .groups = "drop") %>% 
-          mutate(interaction = "reply_count"))
-
-    ## # A tibble: 6 x 3
-    ##   verified     gns interaction   
-    ##   <lgl>      <dbl> <chr>         
-    ## 1 FALSE      0.889 favorite_count
-    ## 2 TRUE     114.    favorite_count
-    ## 3 FALSE    104.    retweet_count 
-    ## 4 TRUE      51.3   retweet_count 
-    ## 5 FALSE     NA     reply_count   
-    ## 6 TRUE      NA     reply_count
-
 This way you get a dataframe with the means of the different
 interactions which makes it possible to pass it on to the ggplot-package
 for visualisation, which is done below. The visualisation looks alot
 like the previous bar charts, but the difference here is `facet_wrap`,
 which creates three bar charts for each type of interaction:
 
-    interactions %>% 
-      add_row(
-        sesamestreet_data %>% 
-          group_by(verified) %>% 
-          summarise(gns = mean(retweet_count), .groups = "drop") %>% 
-          mutate(interaction = "retweet_count")) %>% 
-      add_row(
-        sesamestreet_data %>% 
-          group_by(verified) %>% 
-          summarise(gns = mean(reply_count), .groups = "drop") %>% 
-          mutate(interaction = "reply_count")) %>% 
+    interactions  %>% 
       ggplot(aes(x = verified, y = gns)) +
       geom_col() +
       facet_wrap(~interaction, nrow = 1) +
@@ -365,11 +331,4 @@ which creates three bar charts for each type of interaction:
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
-    ## Warning: Removed 2 rows containing missing values (position_stack).
-
-![](20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-11-1.png)
-In the next step you save the visualisation as png for the article.
-
-    ggsave("20211213_sesammestreet_interactions_dispersed_on_verified_status.png", width = 8, height = 5, dpi = 800)
-
-    ## Warning: Removed 2 rows containing missing values (position_stack).
+![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
