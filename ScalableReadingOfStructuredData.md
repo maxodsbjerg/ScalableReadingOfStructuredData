@@ -484,7 +484,7 @@ values in the returned data.frame.
       arrange(desc(favorite_count))
 (Output removed because of privacy reasons)
 
-# Exporting the new dataset as a JSON file
+## Exporting the new dataset as a JSON file
 
 Once again you use the `toJSON`-function to export our data into a local
 JSON file.
