@@ -33,7 +33,7 @@ The package "rtweet" is an implementation of calls designed to collect and organ
 
 "Kearney, M. W. (2019). rtweet: Collecting and analyzing Twitter data,", "Journal of Open Source Software, 4, 42. 1829.", "(R package version 0.7.0)", "https://joss.theoj.org/papers/10.21105/joss.01829".
 
-If you have not already acquired some twitter data and wish to follow the coding examples step-by-step, you can use your twitter account and the `search_tweets()`-function from the "rtweet"-package to import twitter data into your R environment. Copy the code chunk bellow, to generate a dataframe based on a free-text search on the term "sesamestreet".
+If you have not already acquired some twitter data and wish to follow the coding examples step-by-step, you can use your twitter account and the `search_tweets()`-function from the "rtweet"-package to import twitter data into your R environment. This will return up to 18000 tweets from the past 10 days. Copy the code chunk bellow, to generate a dataframe based on a free-text search on the term "sesamestreet".
 
 ```{r}
 sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
