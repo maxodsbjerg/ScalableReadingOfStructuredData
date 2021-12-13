@@ -152,7 +152,7 @@ dataframe based on a free-text search on the term “sesamestreet”.
     sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
 
 
-# Exploration of a dataset's timely dispersion
+# Step 1: Exploration of a dataset's timely dispersion
 
 Exploring a dataset’s timely dimensions can facilitate the first analytical review of the dataset. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around Sesame Street), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collection according to different periods in art history.
 
@@ -265,7 +265,7 @@ Remember to changes the titles in the code below to match your specific dataset 
 You should now have a graph dipicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary distinctive features.
 
-# Explorations of binary relations in a dataset
+# Step 2: Explorations of binary relations in a dataset
 HVORFOR ER DET VIGTIGT hva
 
 ## Example of a binary exploration: Twitter data
@@ -405,7 +405,7 @@ which creates three bar charts for each type of interaction:
 ![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 
-# Reproducable and Systematic Selection for Close Reading
+# Step 3: Reproducable and Systematic Selection for Close Reading
 Hvorfor er det egentlig at det vigtigt? 
 
 ## Example of Reproducable and Systematic Selection for Close Reading: Twitter data
