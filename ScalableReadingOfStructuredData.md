@@ -79,7 +79,7 @@ Below, the three steps are explained in general terms as well as specifically us
 # Data
 If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the code, we assume that you already have a dataset containing twitter data in a JSON format. Acquisition could, for instance, have happened: 
 
-1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs this section to the (Introduction to Populating a Website with API Data)[https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api])
+1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs this section to the [Introduction to Populating a Website with API Data](https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api))
 2. Using this lesson from the Programming Historian (however, you need to choose a JSON rather than a CSV output).
 
 In the project for which the workflow was originally developed, we had 200,000 tweets collected with the Premium API over two periods of 31 days each. However, for the purpose of this lesson, we made a new dataset using the Open API to make the test case as close to one that could easily be used in a classroom setting.
