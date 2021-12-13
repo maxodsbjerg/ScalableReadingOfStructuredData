@@ -68,69 +68,18 @@ The combination of close and distant reading we suggest in this lesson is meant 
 We originally used the workflow presented below to analyze the remembrance of the American children’s television program *Sesame Street* on Twitter. We used the combined close and distant reading to find out which events generated discussion of *Sesame Street’s* history, which twitter-users dominated the discourse about *Sesame Street’s* history, and which parts of the show's history they mentioned. However, the same analytical framework can also be used to analyze many other kinds of structured data. To demonstrate the applicability of the workflow to other kinds of data, we discuss how it could be applied to a set of structured data from the digitized collections from the National Gallery of Denmark. The data from the National Gallery is very different from the Twitter data used in the lesson's example track, but the general idea of using distant reading to contextualize close reading works equally well as with the Twitter data. 
 
 The workflow for scalable reading of structured data has three steps: 
-1. **Exploration of a dataset’s timely dimension.** <br>In the Twitter dataset, we explore how a specific phenomenon gains traction on the platform during a certain period of time. Had we worked with data from the National Gallery we could have analyzed the timely distribution of their collections e.g. accoring to acquisition year or when artworks were made.
+1. **Exploration of a dataset’s timely dimension.** <br>This step suggests a chronological exploration of a dataset. In the Twitter dataset, we explore how a specific phenomenon gains traction on the platform during a certain period of time. Had we worked on data from the National Gallery we could have analyzed the timely distribution of their collections e.g. accoring to acquisition year or when artworks were made.
  
-2. **Exploration of binary relations in a dataset** <br>In the case of the Twitter data we explore the use of hash-tags (versus non-use), the distribution of tweets on verified versus non-verified accounts, and the interaction level of these two account types. If it was the data from the National Gallery of Denmark, it could be representation of male versus female artists, Danish versus international artists, or paintings versus non-paintings. 
+2. **Exploration of binary relations in a dataset** <br>This step suggests using a binary structure in the dataset as a way to analyze some overall trends. In the Twitter dataset, we explore the use of hash-tags (versus lack of use); the distribution of tweets on verified versus non-verified accounts; and the interaction level of these two account types. Had we worked on data from the National Gallery, it could be a representation of male versus female artists; Danish versus international artists; or paintings versus non-paintings. 
 
-3. **Systematic selection of single data-points for close reading** <br>In the Twitter data set, we systematically select the top 20 liked, retweeted and commented tweets, so that they can be found for close reading. If it was the data from the National Gallery of Denmark, it could be the top 20 most exhibited, borrowed or annotated items.  
-The R code described below is written with the specific purpose of analyzing twitter data, but the three steps can hopefully be of inspiration to students and researchers in the social sciences and humanities who want to use distant reading to qualify and contextualize results in relation to their close readings. 
+3. **Systematic selection of single datapoints for close reading** <br>This step suggests a systematic and reproducible way of selecting single datapoints for close reading. In the Twitter dataset, we systematically selected the top 20 liked, retweeted and commented tweets for close reading. Had we worked on data from the National Gallery, it could for instance, be the top 20 most exhibited, borrowed, or annotated items.  
+Below, the three steps are explained in general terms and via an example. 
+
 # Data
-If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the exact code, we assume that you already have a dataset containing twitter data in a JSON format. It can have been acquired: 
-1. Using Twitter’s APIs: Open, Academic, Premium (see more about APIs in this lesson)
+If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the code, we assume that you already have a dataset containing twitter data in a JSON format. It can have been acquired: 
+1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs in this lesson)
 2. Using this lesson from the Programming Historian (however, you need to choose a JSON rather than a CSV output).
-In the project for which the workflow was originally developed, we had 200,000 tweets collected with the Premium API over two periods of 31 days each. However, for the purpose of this lesson, we made a new dataset using the Open API to make the test case as close to one that could easily be used in a classroom setting. 
+In the project for which the workflow was originally developed, we had 200,000 tweets collected with the Premium API over two periods of 31 days each. However, for the purpose of this lesson, we made a new dataset using the Open API to make the test case as close to one that could easily be used in a classroom setting.
+#Exploration of a dataset’s timely dimension
+The R code described below is written with the specific purpose of analyzing twitter data, but the three steps can hopefully be of inspiration to students and researchers in the social sciences and humanities who want to use distant reading to qualify and contextualize results in relation to their close readings. 
 
-# Timely development
-
-```{r}
-library(rtweet)
-library(tidyverse)
-library(lubridate)
-```
-# Acuirreing your data
-In the following example, you will learn how to process and visualize data acquired from Twitter.com using the Essential access Twitter API. 
-In this example, you will create your dataframe by making a free-text search on the term "sesamestreet" using the `search_tweets()`-function from the "rtweet"-package. 
-
-```{r}
-sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
-```
-
-# Timely dispersion of hashtags and fretext
-In the following we start of with some data processing before moving on to the actual visualisation. The question we are asking the data here is a two-piece one. 
-
-* First of we want to know the dispersion of the tweets over time. 
-* Second we want to know how many of these contain a the hashtag "#sesamestreet". 
-
-Especially the last question needs some data wranglig before it is possible to answer it. The process here is to create a new column which has the value "TRUE" if the tweet contains the hashtag and FALSE if not. This is done with the `mutate()`-function, which creates a new column called "has_sesame_ht". To put the TRUE/FALSE-values in this column we use the  `str_detect()`-function. This function is told that it is detecting on the column "text", which contains the tweet. Next it is told what it is detecting. Here we use the `regex()`-function within `str_detect()` and by doing that we can specify that we are interested in all variants of the hashtag (eg #SesameStreet, #Sesamestreet, #sesamestreet, #SESAMESTREET, etc.).  This is achieved by setting "ignore_case = TRUE".
-
-The next step is another `mutate()`-function, where we create a new column "date". This column will contain just the date of the tweets instead of the entire timestamp from Twitter that not only contains the date, but also the hour, minute and second of the Tweet. This is obtained with the `date()`-function from the "lubridate"-packages, which is told that it should extract the date from the "created_at"-column.  
-Lastly we use the `count`-function from the "tidyverse"-package to count TRUE/FALSE-values in the "has_same_ht"-column per day in the data set. 
-
-```{r}
-sesamestreet_data %>% 
-  mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
-  mutate(date = date(created_at)) %>% 
-  count(date, has_sesame_ht)
-```
-This is the result we now want to visualise. In the code below we have appended the code for the visualisation to the four lines of code above that transforms the data to our needs.  
-To pick up where we left in the previous code chunk we continue with the `ggplot()`-function, which is the graphics package of the "tidyverse". This function is told that it should put date on the x-axis and the counted number of TRUE/FALSE-values on the y-axis. The next line of the creation of the visualisation is `geom_line()`,where we specify linetype=has_sesame_ht, thus creating creating two lines for; one for TRUE and one for FALSE. 
-
-The lines of code following the `geom_line()` argument tweaks the aesthetics of the visualisation. `scale_linetype()`tells R, what the lines should be labeled as. `scale_x_date()` and `scale_y_continuous()` changes the looks of the x- and y-axis respectively. At last, the `labs()` and `guides()` arguments are used to create descriptive text on the visualisation. 
-
-Remember to inspect your data in your R environment and adjust these labels to fit your acquired data. 
-
-```{r}
-sesamestreet_data%>% 
-  mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
-  mutate(date = date(created_at)) %>% 
-  count(date, has_sesame_ht) %>% 
-  ggplot(aes(date, n)) +
-  geom_line(aes(linetype=has_sesame_ht)) +
-  scale_linetype(labels = c("No #sesamestreet", "#sesamestreet")) +
-  scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
-  scale_y_continuous(breaks = seq(0, 30000, by = 5000)) +
-  theme(axis.text.x=element_text(angle=40, hjust=1)) +
-  labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
-  guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
-```
-You should now have a graph dipicting the timely dispersion of tweets in your dataset.
