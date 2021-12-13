@@ -76,7 +76,7 @@ The workflow for scalable reading of structured data has three steps:
 
 Below, the three steps are explained in general terms as well as specifically using our Twitter example. 
 
-# Data
+# Data and Prerequisites
 If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the code, we assume that you already have a dataset containing twitter data in a JSON format. Acquisition could, for instance, have happened: 
 
 1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs this section to the [Introduction to Populating a Website with API Data](https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api))
@@ -86,43 +86,21 @@ In the project for which the workflow was originally developed, we had c. 200,00
 #Exploration of a dataset’s timely dimension
 The R code described below is written with the specific purpose of analyzing twitter data, but the three steps can hopefully be of inspiration to students and researchers in the social sciences and humanities who want to use distant reading to qualify and contextualize results in relation to their close readings. 
 
-# Timedispersion analysis with twitterdata
+
+INDSÆT PREREQ
+
+# Exploration of a dataset's timely dispersion
+
+SKRIV KORT TEKST OM HVORFOR DET ER VIGTIGT sådan akademisk set
+
+# Example of a dataset's timely dispersion: Twitter data
+
+Skriv tekst om at loade biblioteker.
 
     library(rtweet)
     library(tidyverse)
-
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-
-    ## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-    ## ✓ tibble  3.0.5     ✓ dplyr   1.0.3
-    ## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-    ## ✓ readr   1.4.0     ✓ forcats 0.5.0
-
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## x dplyr::filter()  masks stats::filter()
-    ## x purrr::flatten() masks rtweet::flatten()
-    ## x dplyr::lag()     masks stats::lag()
-
     library(lubridate)
 
-    ## 
-    ## Attaching package: 'lubridate'
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     date, intersect, setdiff, union
-
-# Acuirreing your data
-
-In the following example, you will learn how to process and visualize
-data acquired from Twitter.com using the Essential access Twitter API.
-In this example, you will create your dataframe by making a free-text
-search on the term “sesamestreet” using the `search_tweets()`-function
-from the “rtweet”-package.
-
-    sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
-
-# Timely dispersion of hashtags and fretext
 
 In the following we start of with some data processing before moving on
 to the actual visualisation. The question we are asking the data here is
@@ -152,7 +130,7 @@ date, but also the hour, minute and second of the Tweet. This is
 obtained with the `date()`-function from the “lubridate”-packages, which
 is told that it should extract the date from the “created\_at”-column.  
 Lastly we use the `count`-function from the “tidyverse”-package to count
-TRUE/FALSE-values in the “has\_same\_ht”-column per day in the data set.
+TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set.
 
     sesamestreet_data %>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -201,8 +179,7 @@ changes the looks of the x- and y-axis respectively. At last, the
 `labs()` and `guides()` arguments are used to create descriptive text on
 the visualisation.
 
-Remember to inspect your data in your R environment and adjust these
-labels to fit your acquired data.
+Remember to changes the titles in the code below to match your specific dataset (You're probably not doing this on the 13th December 2021). You'll find the titles under `labs`.
 
     sesamestreet_data%>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -218,5 +195,6 @@ labels to fit your acquired data.
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
 ![](rmarkdowns/2_tidslig_udvikling_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+
 You should now have a graph dipicting the timely dispersion of tweets in
 your dataset.
