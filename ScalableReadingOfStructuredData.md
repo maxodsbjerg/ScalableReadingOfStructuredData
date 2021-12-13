@@ -266,7 +266,10 @@ You should now have a graph dipicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary distinctive features.
 
 # Step 2: Explorations of binary relations in a dataset
-HVORFOR ER DET VIGTIGT hva
+Binary exploration of a dataset can be a first and, compared to other digital methods, a realtivey simple way to explore important relations in your dataset. Binary relations are easy to count using computer code and can reveal systematic and defining structures in your datasets. In our case, we were interested in the power relations on Twitter and in the public sphere more generally. We, therefore, explored the differences between verified and non-verified accounts. You might be interested in how many tweets were retweets or originals. Or, suppose you were working with data from the National Gallery. In that case, you might wanted to explore the representation of male versus female artists, Danish versus international artists, or paintings versus other artworks in their collections.  
+ 
+The binary relations can form a context for your close reading of tweets selected in step 3.  You can, for instance, choose to look at the top 20 works in each category to see the differences or similarities between them. Knowing the distribution of data in two categories will also enable you to establish a single datapoint’s representativity vis-à-vis the entire dataset. For instance, if you chose to work on the top 20 liked accounts, you would be able to see that even if there were many verified accounts in this select pool, they were not well represented in the overall dataset. Or, if you choose to work on the top 20 displayed artworks in a dataset from the National Gallery, you might be able to see that they were all pained by international artists who were poorly represented in their entire collections.
+ 
 
 ## Example of a binary exploration: Twitter data
 
