@@ -17,22 +17,22 @@ This file can be used as a template for writing your lesson. It includes informa
 
 **Delete everything above this line when ready to submit your lesson**.
 
-title: YOUR TITLE HERE
+title: Scalable Reading of Structured Data
 collection: lessons
 layout: lesson
 slug: LEAVE BLANK
 date: LEAVE BLANK
 translation_date: LEAVE BLANK
 authors:
-- FORENAME SURNAME 1
-- FORENAME SURNAME 2, etc
+- Max Odsbjerg Pedersen 1
+- Josephine Møller Jensen 2
+- Victor Harbo Johnston 3
+- Helle Strandgaard Jensen
 reviewers:
 - LEAVE BLANK
 editors:
 - LEAVE BLANK
 translator:
-- FORENAME SURNAME 1
-- FORENAME SURNAME 2, etc
 translation-editor:
 - LEAVE BLANK
 translation-reviewer:
@@ -45,87 +45,37 @@ topics: LEAVE BLANK
 abstract: LEAVE BLANK
 ---
 
-# A Table of Contents
-
-Include the following short code to automatically generate a table of contents for your lesson (mandatory).
+# Table of Contents
 
 {% include toc.html %}
 
 --
+# Lesson Structure
+In this lesson, we introduce a workflow for scalable readings of structured data. The lesson is structured in two parallel tracks: 
+1. A general track suggesting a way to work analytically with structured where the distant reading of a large dataset is used as context for a close reading of symastically of distinctive datapoints. 
+2. An example trac which uses we use simple functions in the programming language R to analyze Twitter data. 
+Combining these two tracks we show how scalable reading can be used to work with a wide variety of structured data. Our suggested scalable reading workflow includes two types of distant readings that will help explore and analyze overall features in large data sets (timely dimensions and binary relationships), plus a way of using distant reading to select individual data points for close reading in a systematic and reproducible manner.
+* Setting up a workflow where exploratory, distant reading is used as a context that guides the selection of data for close reading 
+* Employ exploratory analyses to find patterns in well-structured data
+* Apply and chain basic filtering and arranging functions in R (if you have no or little knowledge of R, we recommend looking at this lesson before you being)
 
-## Some Markdown Formatting Examples:
+# Gateway for newcomers: bridging traditional and computational methods 
+The combination of close and distant reading we suggest in this lesson is meant as a way for newcomers to adjust to the kind of computational thinking embedded in digital methods. When connecting distant reading of large datasets (an approach usually new to humanities and social science scholars) to close reading of single data points, we bridge between unfamiliar and familiar methods. In our experience, the scalable reading where the analysis of the entire data sets represents a set of contexts for the close reading eases the difficulties newcomers might experience in asking questions of their material which can be solved using computational thinking. The reproducible way of selecting individual cases for closer inspection speaks, for instance, directly to central questions within the discipline of history and sociology regarding the representativity of case studies. 
 
-# First Level Heading
-## Second Level Heading
-### Third Level Heading
-#### Fourth Level Heading
+# The Scalable Reading 
+We originally used the workflow presented below to analyze the remembrance of the American children’s television program Sesame Street on Twitter. We used the combined close and distant reading to find out which events generated discussion of Sesame Street’s history, which twitter-users dominated the discourse about Sesame Street’s history, and how they remembered the show. However, the same analytical framework can also be used to analyze something as different as the digitized collections and metadata from the National Gallery of Denmark. Though a very different content, the scalable reading works equally well to establish an analytical model that combines a distant reading of the distribution of the Gallery’s collections in space and over time; explore its focus on e.g., portraits or places; and then zoom in on, for instance, the top exhibited works by acquisition year, period, content or artist. 
+The workflow has three steps: 
+1. Exploration of a dataset’s timely dimension. 
+In the Twitter data, we explore how a phenomenon gains traction on the platform during a certain period of time. If it was data from the National Gallery of Denmark, it could be the timely distribution of their collection based on the year a work was done or acquired.
+ 
+2. Exploration of binary relations in a dataset
+In the case of the Twitter data we explore the use of hash-tags (versus non-use), the distribution of tweets on verified versus non-verified accounts, and the interaction level of these two account types. If it was the data from the National Gallery of Denmark, it could be representation of male versus female artists, Danish versus international artists, or paintings versus non-paintings. 
 
-
-### Font Formatting
-**bold text**
-*italic text*
-`reserved words` (eg "for loop", or "myData.csv")
-
-### Links
-
-Create [a link to *Programming Historian*](/) using the format in this sentence. Ensure linked phrases are semantically meaningful. Do not link terms that are meaningful only to sighted users such as "click here".
-
-### Inserting Images:
-
-Copy this short-code to insert an image. Replace words in all caps with your image information (eg, Figure1.jpg). Captions should include sequential image numbering (eg "Figure 1: ..."). 
-
-{% include figure.html filename="IMAGE-FILENAME" caption="CAPTION TO IMAGE" %}
-
-### Alerts and Warnings
-
-If you want to include an aside or a warning to readers, you can set it apart from the main text:
-
-<div class="alert alert-warning">
- Be sure that you follow directions carefully!
-</div>
-
-It will appear in a coloured box and can be useful for drawing attention to particular warnings.
-
-### A Sample Unordered List
-
-* Here is an item
-* Here is another item
-* Here is the final item
-
-### A Sample Ordered List
-
-1. Here is an item
-2. Here is another item
-3. Here is the final item
-
-###A Sample Table
-
-| Heading 1 | Heading 2 | Heading 3 |
-| --------- | --------- | --------- |
-| Row 1, column 1 | Row 1, column 2 | Row 1, column 3|
-| Row 2, column 1 | Row 2, column 2 | Row 2, column 3|
-| Row 3, column 1 | Row 3, column 2 | Row 3, column 3|
-Table 1: This table contains...
-
-### Referencing
-
-*	Links rather than endnotes may be appropriate in most cases.
-*	Ensure linked phrases are semantically meaningful. Do not link terms that are meaningful only to sighted users such as "click here".
-*	All traditionally published and academic literature should be end-noted rather than linked.
-*	If you are writing an "analysis" tutorial, you must refer to published scholarly literature.
-*	Endnote superscripts should be outside the final punctuation like this.[^1] Not inside like this[^1].
-*	Use the "Notes and Bibliography" system found in the [The Chicago Manual of Style, 17th Edition](https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html) for endnotes.
-
-#### An End Note:
-
-This is some text.[^1]
-This is some more text.[^2]
-
-##### Endnotes
-[^1]: Properly formatted citation using Chicago Manual of Style
-[^2]: Properly formatted citation using Chicago Manual of Style
-
-
-# Further Questions?
-
-Your assigned editor or the managing editor would be happy to answer any questions you may have.
+3. Systematic selection of single data-points for close reading
+In the Twitter data set, we systematically select the top 20 liked, retweeted and commented tweets, so that they can be found for close reading. If it was the data from the National Gallery of Denmark, it could be the top 20 most exhibited, borrowed or annotated items. 
+The R code described below is written with the specific purpose of analyzing twitter data, but the three steps can hopefully be of inspiration to students and researchers in the social sciences and humanities who want to use distant reading to qualify and contextualize results in relation to their close readings. 
+Data
+If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the exact code, we assume that you already have a dataset containing twitter data in a JSON format. It can have been acquired: 
+a)	Using Twitter’s APIs: Open, Academic, Premium (see more about APIs in this lesson)
+b)	Using this lesson from the Programming Historian (however, you need to choose a JSON rather than a CSV output).
+In the project for which the workflow was originally developed, we had 200,000 tweets collected with the Premium API over two periods of 31 days each. However, for the purpose of this lesson, we made a new dataset using the Open API to make the test case as close to one that could easily be used in a classroom setting. 
