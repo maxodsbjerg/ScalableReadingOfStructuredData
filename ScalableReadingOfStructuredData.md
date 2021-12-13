@@ -277,9 +277,9 @@ we now use the `geom_col-functions` in order to create columns. When you start w
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))+
           labs(x = "Verified status",
           y = "Percentage",
-          title = "Figure 3 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
+          title = "Figure 2 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
           subtitle = "Period: 4 December 2021 - 13 December 2021", 
-          caption = "Total number of tweets: 2413") + 
+          caption = "Total number of tweets: 2435") + 
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
 ![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
