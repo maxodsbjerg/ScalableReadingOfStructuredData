@@ -35,7 +35,7 @@ dplyr package which is part of tidyverse.
       filter(is_retweet == FALSE) %>% 
       arrange(desc(favorite_count))
 
-    ## # A tibble: 861 x 90
+    ## # A tibble: 871 x 90
     ##    user_id status_id created_at          screen_name text  source
     ##    <chr>   <chr>     <dttm>              <chr>       <chr> <chr> 
     ##  1 863306… 14678714… 2021-12-06 15:00:01 sesamestre… "Lif… Twitt…
@@ -48,7 +48,7 @@ dplyr package which is part of tidyverse.
     ##  8 863306… 14686566… 2021-12-08 19:00:01 sesamestre… "You… Twitt…
     ##  9 863306… 14675090… 2021-12-05 15:00:01 sesamestre… "Gon… Twitt…
     ## 10 238839… 14682670… 2021-12-07 17:12:01 DanielDBec… "Hol… Twitt…
-    ## # … with 851 more rows, and 84 more variables: display_text_width <dbl>,
+    ## # … with 861 more rows, and 84 more variables: display_text_width <dbl>,
     ## #   reply_to_status_id <chr>, reply_to_user_id <chr>,
     ## #   reply_to_screen_name <chr>, is_quote <lgl>, is_retweet <lgl>,
     ## #   favorite_count <int>, retweet_count <int>, quote_count <int>,
@@ -81,7 +81,7 @@ dplyr package which is part of tidyverse.
     ## #   profile_image_url <chr>
 
 As you can see in the Global Environment, your data *sesamestreet\_data*
-has a total of 2411 observations. After running our chunk of code, you
+has a total of 2435 observations. After running our chunk of code, you
 can now read off our returned data.frame that there are 852
 observations. Meaning 852 original tweets that are not marked as
 retweets.
@@ -124,19 +124,19 @@ You then arrange them after their favorite\_count value by using the
     ##    favorite_count screen_name   verified text                                   
     ##             <int> <chr>         <lgl>    <chr>                                  
     ##  1            968 sesamestreet  TRUE     "Life is a balancing act and we think …
-    ##  2            940 sesamestreet  TRUE     "Sesame Street's most trusted news sou…
-    ##  3            808 sesamestreet  TRUE     "Our favorite part of the holiday seas…
-    ##  4            707 GeorgeTakei   TRUE     "Bravo, @SesameStreet! 💕 Such an impor…
+    ##  2            941 sesamestreet  TRUE     "Sesame Street's most trusted news sou…
+    ##  3            825 sesamestreet  TRUE     "Our favorite part of the holiday seas…
+    ##  4            708 GeorgeTakei   TRUE     "Bravo, @SesameStreet! 💕 Such an impor…
     ##  5            581 sesamestreet  TRUE     "Today we're celebrating our friend Ro…
     ##  6            574 sesamestreet  TRUE     "Who else is catching up on emails and…
     ##  7            560 sesamestreet  TRUE     "Clicking \"Accept All Cookies\" feels…
     ##  8            522 sesamestreet  TRUE     "You deserve a little break! Stop scro…
     ##  9            376 sesamestreet  TRUE     "Gonger isn't the only culinary star i…
     ## 10            286 DanielDBeckw… FALSE    "Holiday Card #7, 2016\n\"Gee, Bert, d…
-    ## 11            212 sesamestreet  TRUE     "Two friends, two ideas, and one piece…
-    ## 12            207 sesamestreet  TRUE     "Everyone's favorite Bug Scouts are he…
-    ## 13            206 sesamestreet  TRUE     "'Tis the season to be jolly with all …
-    ## 14            183 sesamestreet  TRUE     "It's the most wonderful time of the y…
+    ## 11            213 sesamestreet  TRUE     "Two friends, two ideas, and one piece…
+    ## 12            207 sesamestreet  TRUE     "'Tis the season to be jolly with all …
+    ## 13            207 sesamestreet  TRUE     "Everyone's favorite Bug Scouts are he…
+    ## 14            187 sesamestreet  TRUE     "It's the most wonderful time of the y…
     ## 15            166 Bigbird96     FALSE    "\"How do I know I'm here, not in some…
     ## 16            128 sesamestreet  TRUE     "We’re more than just a children's sho…
     ## 17             98 MHermannPhoto FALSE    "A joyous night as @StreetGangMovie ce…
@@ -190,7 +190,7 @@ been produced by verified accounts.
       filter(verified == FALSE) %>% 
       arrange(desc(favorite_count))
 
-    ## # A tibble: 816 x 90
+    ## # A tibble: 826 x 90
     ##    user_id status_id created_at          screen_name text  source
     ##    <chr>   <chr>     <dttm>              <chr>       <chr> <chr> 
     ##  1 238839… 14682670… 2021-12-07 17:12:01 DanielDBec… "Hol… Twitt…
@@ -203,7 +203,7 @@ been produced by verified accounts.
     ##  8 124377… 14683917… 2021-12-08 01:27:22 Nakwame_Sa… "\"H… Twitt…
     ##  9 142007… 14679019… 2021-12-06 17:01:11 momrrystag… "I l… Twitt…
     ## 10 121330… 14682489… 2021-12-07 16:00:00 magic_ratd… "🎶🔔H… Twitt…
-    ## # … with 806 more rows, and 84 more variables: display_text_width <dbl>,
+    ## # … with 816 more rows, and 84 more variables: display_text_width <dbl>,
     ## #   reply_to_status_id <chr>, reply_to_user_id <chr>,
     ## #   reply_to_screen_name <chr>, is_quote <lgl>, is_retweet <lgl>,
     ## #   favorite_count <int>, retweet_count <int>, quote_count <int>,
@@ -235,7 +235,7 @@ been produced by verified accounts.
     ## #   profile_banner_url <chr>, profile_background_url <chr>,
     ## #   profile_image_url <chr>
 
-You observe in the returned data.frame that 809 of the total 2413
+You observe in the returned data.frame that 809 of the total 2435
 observations are not retweets AND are from non-verified accounts.
 
 Looking again at the favorite\_count column, you observe that the top 20

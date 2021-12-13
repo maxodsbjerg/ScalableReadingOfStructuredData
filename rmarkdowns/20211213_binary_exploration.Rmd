@@ -61,9 +61,9 @@ sesamestreet_data %>%
   scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))+
       labs(x = "Verified status",
       y = "Percentage",
-      title = "Figure 3 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
+      title = "Figure 2 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
       subtitle = "Period: 4 December 2021 - 13 December 2021", 
-      caption = "Total number of tweets: 2413") + 
+      caption = "Total number of tweets: 2435") + 
   theme(axis.text.y = element_text(angle = 14, hjust = 1))
 ```
 In this next code chunk we save the result for the article. 
@@ -96,9 +96,9 @@ interactions  %>%
   ggplot(aes(x = verified, y = gns)) +
   geom_col() +
   facet_wrap(~interaction, nrow = 1) +
-  labs(title = "Figure 4 - Means of different interaction count dispersed on the verified\nstatus in the sesammestreet dataset",
+  labs(title = "Figure 3 - Means of different interaction count dispersed on the verified\nstatus in the sesammestreet dataset",
        subtitle = "Period: Period: 4 December 2021 - 13 December 2021",
-       caption = "Total number of tweets: 2411",
+       caption = "Total number of tweets: 2435",
        x = "Verified status",
        y = "Average of engagements counts") +
   scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))

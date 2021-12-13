@@ -37,7 +37,7 @@ has “FALSE” - then it isn’t.
     ## # A tibble: 2 x 2
     ##   verified     n
     ## * <lgl>    <int>
-    ## 1 FALSE     2372
+    ## 1 FALSE     2374
     ## 2 TRUE        64
 
 So now you have the count - but it would make more sence to have these
@@ -55,8 +55,8 @@ dataset one row = one tweet:
     ## # A tibble: 2 x 3
     ##   verified     n total
     ## * <lgl>    <int> <int>
-    ## 1 FALSE     2372  2436
-    ## 2 TRUE        64  2436
+    ## 1 FALSE     2374  2438
+    ## 2 TRUE        64  2438
 
 Using another pipe you now create a new column called “percentage” where
 you calculate and store the percentage of the dispersion between
@@ -70,8 +70,8 @@ verified and non-verified tweets:
     ## # A tibble: 2 x 4
     ##   verified     n total   pct
     ## * <lgl>    <int> <int> <dbl>
-    ## 1 FALSE     2372  2436 97.4 
-    ## 2 TRUE        64  2436  2.63
+    ## 1 FALSE     2374  2438 97.4 
+    ## 2 TRUE        64  2438  2.63
 
 The next step is to visualize this result. Here you use the
 “ggplot2”-package to create a bar chart:
@@ -89,9 +89,9 @@ argument.
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))+
           labs(x = "Verified status",
           y = "Percentage",
-          title = "Figure 3 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
+          title = "Figure 2 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
           subtitle = "Period: 4 December 2021 - 13 December 2021", 
-          caption = "Total number of tweets: 2413") + 
+          caption = "Total number of tweets: 2435") + 
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
 ![](20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
@@ -138,9 +138,9 @@ which creates three bar charts for each type of interaction:
       ggplot(aes(x = verified, y = gns)) +
       geom_col() +
       facet_wrap(~interaction, nrow = 1) +
-      labs(title = "Figure 4 - Means of different interaction count dispersed on the verified\nstatus in the sesammestreet dataset",
+      labs(title = "Figure 3 - Means of different interaction count dispersed on the verified\nstatus in the sesammestreet dataset",
            subtitle = "Period: Period: 4 December 2021 - 13 December 2021",
-           caption = "Total number of tweets: 2411",
+           caption = "Total number of tweets: 2435",
            x = "Verified status",
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))

@@ -74,26 +74,26 @@ TRUE/FALSE-values in the “has\_same\_ht”-column per day in the data set.
     ## # A tibble: 20 x 3
     ##    date       has_sesame_ht     n
     ##    <date>     <lgl>         <int>
-    ##  1 2021-12-04 FALSE            99
+    ##  1 2021-12-04 FALSE            98
     ##  2 2021-12-04 TRUE             17
-    ##  3 2021-12-05 FALSE           165
+    ##  3 2021-12-05 FALSE           164
     ##  4 2021-12-05 TRUE             53
-    ##  5 2021-12-06 FALSE           373
+    ##  5 2021-12-06 FALSE           372
     ##  6 2021-12-06 TRUE             62
-    ##  7 2021-12-07 FALSE           265
-    ##  8 2021-12-07 TRUE             86
-    ##  9 2021-12-08 FALSE           187
-    ## 10 2021-12-08 TRUE             93
+    ##  7 2021-12-07 FALSE           264
+    ##  8 2021-12-07 TRUE             85
+    ##  9 2021-12-08 FALSE           186
+    ## 10 2021-12-08 TRUE             92
     ## 11 2021-12-09 FALSE           150
-    ## 12 2021-12-09 TRUE             55
+    ## 12 2021-12-09 TRUE             54
     ## 13 2021-12-10 FALSE           142
     ## 14 2021-12-10 TRUE             59
     ## 15 2021-12-11 FALSE           196
     ## 16 2021-12-11 TRUE             41
     ## 17 2021-12-12 FALSE           255
     ## 18 2021-12-12 TRUE             44
-    ## 19 2021-12-13 FALSE            55
-    ## 20 2021-12-13 TRUE             35
+    ## 19 2021-12-13 FALSE            67
+    ## 20 2021-12-13 TRUE             37
 
 This is the result we now want to visualise. In the code below we have
 appended the code for the visualisation to the four lines of code above
@@ -126,7 +126,7 @@ labels to fit your acquired data.
       scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
       scale_y_continuous(breaks = seq(0, 30000, by = 5000)) +
       theme(axis.text.x=element_text(angle=40, hjust=1)) +
-      labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
+      labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.435") +
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
 ![](2_tidslig_udvikling_files/figure-markdown_strict/unnamed-chunk-4-1.png)

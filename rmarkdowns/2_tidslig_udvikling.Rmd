@@ -53,7 +53,7 @@ sesamestreet_data%>%
   scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
   scale_y_continuous(breaks = seq(0, 30000, by = 5000)) +
   theme(axis.text.x=element_text(angle=40, hjust=1)) +
-  labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
+  labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.435") +
   guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 ```
 You should now have a graph dipicting the timely dispersion of tweets in your dataset.
