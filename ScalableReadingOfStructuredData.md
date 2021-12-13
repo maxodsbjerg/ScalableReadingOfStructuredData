@@ -575,7 +575,7 @@ If you have collected your data by following the lesson [Beginner's Guide to Twi
     df$Time <- format(as.POSIXct(df$date,format="%Y-%m-%d %H:%M:%S"),"%H:%M:%S")
     df$date <- format(as.POSIXct(df$date,format="%Y.%m-%d %H:%M:%S"),"%Y-%m-%d")
 
-Some other columns that does not have the same names in our data as in the data extracted with the lesson *Beginner's Guide to Twitter Data* are our columns `verified`and `text` that are called `user.verified` and `full_text`. Here you have two options either you change the code, so that everywhere `verified` or `text` occurs you write `user.verified` or `full_text`. Another approch is to change the column names, which can be done with the following code:
+Some other columns that does not have the same names in our data as in the data extracted with the lesson *Beginner's Guide to Twitter Data* are our columns `verified`and `text` that are called `user.verified` and `full_text`. Here you have two options either you change the code, so that everywhere `verified` or `text` occurs you write `user.verified` or `full_text` instead. Another approch is to change the column names, which can be done with the following code:
 
     df %>% 
      rename(verified = user.verified) %>% 
