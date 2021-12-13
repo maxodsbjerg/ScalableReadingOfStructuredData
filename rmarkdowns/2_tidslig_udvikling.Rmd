@@ -1,6 +1,6 @@
 ---
 title: "2_tidslig udvikling"
-output: html_document
+output: md_document
 ---
 
 # Timedispersion analysis with twitterdata

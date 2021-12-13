@@ -2,13 +2,14 @@
 title: "20211213_binary_exploration"
 author: "Victor Harbo Johnston"
 date: "12/13/2021"
-output: html_document
+output: md_document
 ---
 
 ```{r, message=FALSE}
 library(tidyverse)
 library(jsonlite)
 library(lubridate)
+library(rtweet)
 ```
 
 # Loading dataset

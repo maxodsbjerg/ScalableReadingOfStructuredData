@@ -2,8 +2,22 @@
 title: "20211213_reproducable_and_systematic_selection"
 author: "Victor Harbo Johnston"
 date: "12/13/2021"
-output: html_document
+output: md_document
 ---
+```{r, message=FALSE}
+library(tidyverse)
+library(jsonlite)
+library(lubridate)
+library(rtweet)
+```
+
+# Loading dataset
+The dataset collected from the Twitter-API[https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api] is stored in the json-format. You thus loaded into R with the function `fromJSON` from the jsonlite-package. You name the dataset "sesamestreet_data" and you will be using this name, when referring to the dataset in R.
+
+```{r}
+sesamestreet_data <- search_tweets("sesamestreet", n = 18000, include_rts = TRUE)
+```
+
 # Filtering for original tweets and observing the minimum favorite_count value for the top 20
 
 To examine original tweets only, we start by filtering away all the tweets that are "retweets". 
