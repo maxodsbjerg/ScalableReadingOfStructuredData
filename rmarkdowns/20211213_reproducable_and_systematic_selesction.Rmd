@@ -20,7 +20,7 @@ sesamestreet_data %>%
   arrange(desc(favorite_count))
 ```
 
-As you can see in our Global Environment, our data *sesamestreet_data* has a total of 2411 observations.
+As you can see in the Global Environment, your data *sesamestreet_data* has a total of 2411 observations.
 After running our chunk of code, you can now read off our returned data.frame that there are 852 observations. Meaning 852 original tweets that are not marked as retweets.
 
 Looking at the column favorite_count, you can now observe that the top 20 most liked tweets all have a count that is above 50. These numbers are variables, that may change, if you choose to reproduce this example by yourself. Be sure to check these numbers.
