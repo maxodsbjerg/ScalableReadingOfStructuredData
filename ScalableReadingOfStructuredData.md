@@ -82,12 +82,6 @@ If you want to reproduce the analysis we present below, using not only the overa
 1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs this section to the [Introduction to Populating a Website with API Data](https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api))
 2. Using the [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) from the Programming Historian.
 
-In the project for which the workflow was originally developed, we had c. 200,000 tweets collected with the Premium API over two periods of 31 days each. However, for the purpose of this lesson, we made a new dataset using the Open API to make the test case as close to a classroom setting as possible.
-#Exploration of a dataset’s timely dimension
-The R code described below is written with the specific purpose of analyzing twitter data, but the three steps can hopefully be of inspiration to students and researchers in the social sciences and humanities who want to use distant reading to qualify and contextualize results in relation to their close readings. 
-
-## Prerequisites for following the example track
-
 To follow the coding examples, make sure you have installed and loaded
 the following packages:
 
@@ -96,38 +90,26 @@ the following packages:
 The package “tidyverse” is an umbrella package loading several libraries
 that are all handy in terms of working with data. For further
 information on and learning to use tidyverse see
-<https://www.tidyverse.org>.
+<https://www.tidyverse.org>.[^1]
 
-Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,
-Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E,
-Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K,
-Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.”
-Journal of Open Source Software, 4(43), 1686. doi: 10.21105/joss.01686
 
 ### lubridate
 
 The package lubridate is used for handling different date formats in R
 and doing operations on them. The package in from the same group behind
-the package “tidyverse”, but is not a core package in the “tidyverse”.
+the package “tidyverse”, but is not a core package in the “tidyverse”.[^2]
 
-Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with
-lubridate. Journal of Statistical Software, 40(3), 1-25. URL
-<https://www.jstatsoft.org/v40/i03/>.
 
 ### jsonlite
 
 The package “jsonlite” is for handling the dataformat Javascript Object
 Notation (json), which is a format used for exchanging data on the
 internet. For more information on the jsonlite-package see
-<https://cran.r-project.org/web/packages/jsonlite/index.html>
+<https://cran.r-project.org/web/packages/jsonlite/index.html>[^3]
 
 If you already have a JSON file containing your twitter data, you can
 use the `fromJSON`-function in the `jsonlite`-package to upload the data
 into your R environment.
-
-Ooms J (2014). “The jsonlite Package: A Practical and Consistent Mapping
-Between JSON Data and R Objects.” arXiv:1403.2805 \[stat.CO\].
-<https://arxiv.org/abs/1403.2805>.
 
 ### Acquiring a small testdataset right now
 
@@ -136,11 +118,7 @@ Between JSON Data and R Objects.” arXiv:1403.2805 \[stat.CO\].
 The package “rtweet” is an implementation of calls designed to collect
 and organize Twitter data via Twitter’s REST and stream Application
 Program Interfaces (API), which can be found at the following URL:
-<https://developer.twitter.com/en/docs>.
-
-“Kearney, M. W. (2019). rtweet: Collecting and analyzing Twitter data,”,
-“Journal of Open Source Software, 4, 42. 1829.”, “(R package version
-0.7.0)”, “<https://joss.theoj.org/papers/10.21105/joss.01829>”.
+<https://developer.twitter.com/en/docs>.[^4]
 
 If you have not already acquired some twitter data and wish to follow
 the coding examples step-by-step, you can use your twitter account and
@@ -153,12 +131,12 @@ dataframe based on a free-text search on the term “sesamestreet”.
 
 
 # Step 1: Exploration of a dataset's timely dispersion
-Exploring a dataset’s timely dimensions can facilitate the first analytical review of the dataset. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around Sesame Street), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collection according to different periods in art history. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual data points selected for close reading in step 3.
+Exploring a dataset’s timely dimensions can facilitate the first analytical review of the data. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around Sesame Street), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collection according to different periods in art history. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3.
 
 
 ## Example of a dataset's timely dispersion: Twitter data
 
-In R, one works with packages each adding numerous functionalities to the core functions of R. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this [Lesson](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the `library()` function as below:
+In R, you work with packages each adding numerous functionalities to the core functions of R. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this section of lesson [Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the `library()` function as below:
 
     library(rtweet)
     library(tidyverse)
@@ -266,9 +244,9 @@ You should now have a graph dipicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary distinctive features.
 
 # Step 2: Explorations of binary relations in a dataset
-Binary exploration of a dataset can be a first and, compared to other digital methods, a realtivey simple way to explore important relations in your dataset. Binary relations are easy to count using computer code and can reveal systematic and defining structures in your datasets. In our case, we were interested in the power relations on Twitter and in the public sphere more generally. We, therefore, explored the differences between verified and non-verified accounts. You might be interested in how many tweets were retweets or originals. Or, suppose you were working with data from the National Gallery. In that case, you might wanted to explore the representation of male versus female artists, Danish versus international artists, or paintings versus other artworks in their collections.  
+Binary exploration of a dataset can be a first and, compared to other digital methods, a relatively simple way to explore important relations in your dataset. Binary relations are easy to count using computer code and can reveal systematic and defining structures in your datasets. In our case, we were interested in the power relations on Twitter and in the public sphere more generally. We, therefore, explored the differences between verified and non-verified accounts. You might be interested in how many tweets were retweets or originals. Or, suppose you were working with data from the National Gallery. In that case, you might wanted to explore the representation of male versus female artists, Danish versus international artists, or paintings versus other artworks in their collections.  
  
-The binary relations can form a context for your close reading of tweets selected in step 3.  You can, for instance, choose to look at the top 20 works in each category to see the differences or similarities between them. Knowing the distribution of data in two categories will also enable you to establish a single datapoint’s representativity vis-à-vis the entire dataset. For instance, if you chose to work on the top 20 liked accounts, you would be able to see that even if there were many verified accounts in this select pool, they were not well represented in the overall dataset. Or, if you choose to work on the top 20 displayed artworks in a dataset from the National Gallery, you might be able to see that they were all pained by international artists who were poorly represented in their entire collections.
+The binary relations can form a context for your close reading of datapoints selected in step 3. Knowing the distribution of data in two categories will also enable you to establish a single datapoint’s representativity vis-à-vis the entire dataset. For instance, if you chose to work on the top 20 liked tweets, you would be able to see that even if there were many tweets from verified accounts in this select pool, these accounts were not well represented in the overall dataset. Or, if you choose to work on the top 20 displayed artworks in a dataset from the National Gallery, you might be able to see that they were all painted by international artists who were poorly represented in their entire collections.
  
 
 ## Example of a binary exploration: Twitter data
@@ -278,7 +256,7 @@ to show the logic of the pipe (`%>%`) in R. Once you get a hold of this
 idea the remainder of the data processing will be more easy to read and
 understand. The overall goal of this section is to find out how the
 tweets disperses on non-verified and verified account and visualize the
-result .
+result.
 
 Using the pipe `%>%` you pass the data on downwards - the data is
 flowing through the pipe like water! Here you pour the data to the
@@ -356,7 +334,7 @@ we now use the `geom_col-functions` in order to create columns. When you start w
 
 ![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
-## Means of different interaction count dispersed on the verified status in the sesammestreet dataset
+## Interaction count dispersed on verified status
 
 
 In the code below you group the dataset based on each tweets verified
@@ -413,7 +391,7 @@ One of the great advantages of combining close and distant reading is the possib
 
 How many datapoints you choose to close read will dependent on what phenomena you are researching and how much time you have, and how complex the data is (for instance, analysing individual artwork might be much more time consuming than reading individual tweets—but it of course depends on your purpose). It is, therefore, important that you are systematical in your selection of datapoints in order to ensure compliance with your research questions.  
 
-In the example related to step 2 above, we saw how tweets produced by verified twitter accounts have a significantly higher interaction count than tweets made by non-verified accounts. Knowing that a tweet is maximum 140 characters long and understanding the relation between the two types of tweets’ interaction level, it is for this close reading of tweets suitable to extract the top 20 most liked tweets by both verified and non-verified users for a systematically limited close reading.  
+In the example related to step 2 above, we saw how tweets produced by verified twitter accounts have a significantly higher interaction count than tweets made by non-verified accounts. Knowing that a tweet is maximum 280 characters long and understanding the relation between the two types of tweets’ interaction level, it is for this close reading of tweets suitable to extract the top 20 most liked tweets by both verified and non-verified users for a systematic close reading.  
 
 
 ## Example of Reproducable and Systematic Selection for Close Reading: Twitter data
@@ -438,14 +416,11 @@ dplyr package which is part of tidyverse.
 (Output removed because of privacy reasons) 
 
 As you can see in the Global Environment, your data *sesamestreet\_data*
-has a total of 2435 observations. After running our chunk of code, you
-can now read off our returned data.frame that there are 852
-observations. Meaning 852 original tweets that are not marked as
-retweets.
+has a total of 2435 observations (the number will vary depending on when you collected your data). After running the chunk of code, you
+can now read off your returned data.frame how many unique tweets your dataset contains. In our example it was 852 - remember yours will vary.  
 
-Looking at the column favorite\_count, you can now observe that the top
-20 most liked tweets all have a count that is above 50. These numbers
-are variables, that may change, if you choose to reproduce this example
+Looking at the column favorite\_count, you can now observe how many likes you top-20 lies above. In our example the top-20 had a count above 50. These numbers
+are variables, that changes, when you choose to reproduce this example
 by yourself. Be sure to check these numbers.
 
 ## Creating a new dataset of the top 20 most liked tweets (all accounts)
@@ -588,3 +563,22 @@ Some other columns that does not have the same names in our data as in the data 
     df %>% 
      rename(verified = user.verified) %>% 
      rename(text = full_text) -> df
+     
+# References
+[^1]: Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,
+Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E,
+Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K,
+Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.”
+*Journal of Open Source Software*, 4(43), 1686. doi: 10.21105/joss.01686
+
+[^2]: Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with
+lubridate. Journal of Statistical Software, 40(3), 1-25. URL
+<https://www.jstatsoft.org/v40/i03/>.
+
+[^3]: Ooms J (2014). “The jsonlite Package: A Practical and Consistent Mapping
+Between JSON Data and R Objects.” arXiv:1403.2805 \[stat.CO\].
+<https://arxiv.org/abs/1403.2805>.
+
+[^4]: “Kearney, M. W. (2019). rtweet: Collecting and analyzing Twitter data,”,
+“Journal of Open Source Software, 4, 42. 1829.”, “(R package version
+0.7.0)”, “<https://joss.theoj.org/papers/10.21105/joss.01829>”.
