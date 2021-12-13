@@ -331,4 +331,4 @@ which creates three bar charts for each type of interaction:
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
-![](20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
