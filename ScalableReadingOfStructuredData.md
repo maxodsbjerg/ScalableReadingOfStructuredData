@@ -73,12 +73,15 @@ The workflow for scalable reading of structured data has three steps:
 2. **Exploration of binary relations in a dataset** <br>This step suggests using a binary structure in the dataset as a way to analyze some overall trends. In the Twitter dataset, we explore the use of hash-tags (versus lack of use); the distribution of tweets on verified versus non-verified accounts; and the interaction level of these two account types. Had we worked on data from the National Gallery, it could be a representation of male versus female artists; Danish versus international artists; or paintings versus non-paintings. 
 
 3. **Systematic selection of single datapoints for close reading** <br>This step suggests a systematic and reproducible way of selecting single datapoints for close reading. In the Twitter dataset, we systematically selected the top 20 liked, retweeted and commented tweets for close reading. Had we worked on data from the National Gallery, it could for instance, be the top 20 most exhibited, borrowed, or annotated items.  
-Below, the three steps are explained in general terms and via an example. 
+
+Below, the three steps are explained in general terms as well as specifically using our Twitter example. 
 
 # Data
-If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the code, we assume that you already have a dataset containing twitter data in a JSON format. It can have been acquired: 
-1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs in this lesson)
+If you want to reproduce the analysis we present below, using not only the overall conceptual framework but also the code, we assume that you already have a dataset containing twitter data in a JSON format. Acquisition could, for instance, have happened: 
+
+1. Using Twitter’s APIs: Open/Essential, Academic/Premium (see more about APIs this section to the ('Introduction to Populating a Website with API Data')[https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api])
 2. Using this lesson from the Programming Historian (however, you need to choose a JSON rather than a CSV output).
+
 In the project for which the workflow was originally developed, we had 200,000 tweets collected with the Premium API over two periods of 31 days each. However, for the purpose of this lesson, we made a new dataset using the Open API to make the test case as close to one that could easily be used in a classroom setting.
 #Exploration of a dataset’s timely dimension
 The R code described below is written with the specific purpose of analyzing twitter data, but the three steps can hopefully be of inspiration to students and researchers in the social sciences and humanities who want to use distant reading to qualify and contextualize results in relation to their close readings. 
