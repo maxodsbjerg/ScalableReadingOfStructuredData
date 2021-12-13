@@ -545,7 +545,7 @@ values in the returned data.frame.
     sesamestreet_data_favorite_count_over_15_non_verified %>% 
       select(favorite_count, screen_name, verified, text) %>% 
       arrange(desc(favorite_count))
-(Output removed because of privacy reasons)
+<span style="color: green">(Output removed because of privacy reasons)</span>
 
 ## Exporting the new dataset as a JSON file
 
