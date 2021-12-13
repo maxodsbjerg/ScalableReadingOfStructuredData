@@ -39,7 +39,7 @@ sesamestreet_data %>%
 ```
 
 
-# Step 5. Inspecting our new dafaframe (all)
+# Inspecting our new dafaframe (all)
 
 To create a quick overview of our new dataset, you use the `select`-function from the dplyr-package to isolate the variables you wish to inspect. In this case, you wish to isolate the columns favorite_count, screen_name, verified and text.
 
@@ -54,7 +54,7 @@ sesamestreet_data_favorite_count_over_50 %>%
 This code chunk returns a data.frame containing the previously stated values. It is therefore much easier to inspect, than looking though the whole dataset *sesamestreet_data_favorite_count_over_50* in our Global Environment.
 
 
-# Step 6. Exporting the new dataset in JSON file format
+# Exporting the new dataset as a JSON file
 
 To export our new dataset out of our R environment and save it as a JSON file, you use the `toJSON`-function from the jsonlite-package. 
 
@@ -116,7 +116,7 @@ sesamestreet_data_favorite_count_over_15_non_verified %>%
 ```
 
 
-# Exporting the new dataset in JSON file format
+# Exporting the new dataset as a JSON file
 
 Once again you use the `toJSON`-function to export our data into a local JSON file.
 
