@@ -1,7 +1,12 @@
 ---
 title: "prerequisites_for_following_examples"
-output: html_document
+output: md_document
 ---
+```{r}
+library(rtweet)
+library(tidyverse)
+library(lubridate)
+```
 
 # Prerequisites for following the example track
 

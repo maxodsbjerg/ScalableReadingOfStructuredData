@@ -1,0 +1,88 @@
+    library(rtweet)
+    library(tidyverse)
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+
+    ## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+    ## ✓ tibble  3.0.5     ✓ dplyr   1.0.3
+    ## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+    ## ✓ readr   1.4.0     ✓ forcats 0.5.0
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## x dplyr::filter()  masks stats::filter()
+    ## x purrr::flatten() masks rtweet::flatten()
+    ## x dplyr::lag()     masks stats::lag()
+
+    library(lubridate)
+
+    ## 
+    ## Attaching package: 'lubridate'
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     date, intersect, setdiff, union
+
+# Prerequisites for following the example track
+
+To follow the coding examples, make sure you have installed and loaded
+the following packages:
+
+## tidyverse
+
+The package “tidyverse” is an umbrella package loading several libraries
+that are all handy in terms of working with data. For further
+information on and learning to use tidyverse see
+<https://www.tidyverse.org>.
+
+Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,
+Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E,
+Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K,
+Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.”
+Journal of Open Source Software, 4(43), 1686. doi: 10.21105/joss.01686
+
+## lubridate
+
+The package lubridate is used for handling different date formats in R
+and doing operations on them. The package in from the same group behind
+the package “tidyverse”, but is not a core package in the “tidyverse”.
+
+Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with
+lubridate. Journal of Statistical Software, 40(3), 1-25. URL
+<https://www.jstatsoft.org/v40/i03/>.
+
+## jsonlite
+
+The package “jsonlite” is for handling the dataformat Javascript Object
+Notation (json), which is a format used for exchanging data on the
+internet. For more information on the jsonlite-package see
+<https://cran.r-project.org/web/packages/jsonlite/index.html>
+
+If you already have a JSON file containing your twitter data, you can
+use the `fromJSON`-function in the `jsonlite`-package to upload the data
+into your R environment.
+
+Ooms J (2014). “The jsonlite Package: A Practical and Consistent Mapping
+Between JSON Data and R Objects.” arXiv:1403.2805 \[stat.CO\].
+<https://arxiv.org/abs/1403.2805>.
+
+## Recomendations for acqurring your twitter data
+
+### rtweet
+
+The package “rtweet” is an implementation of calls designed to collect
+and organize Twitter data via Twitter’s REST and stream Application
+Program Interfaces (API), which can be found at the following URL:
+<https://developer.twitter.com/en/docs>.
+
+“Kearney, M. W. (2019). rtweet: Collecting and analyzing Twitter data,”,
+“Journal of Open Source Software, 4, 42. 1829.”, “(R package version
+0.7.0)”, “<https://joss.theoj.org/papers/10.21105/joss.01829>”.
+
+If you have not already acquired some twitter data and wish to follow
+the coding examples step-by-step, you can use your twitter account and
+the `search_tweets()`-function from the “rtweet”-package to import
+twitter data into your R environment. This will return up to 18000
+tweets from the past 10 days. Copy the code chunk bellow, to generate a
+dataframe based on a free-text search on the term “sesamestreet”.
+
+    sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
