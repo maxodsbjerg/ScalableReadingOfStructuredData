@@ -136,6 +136,8 @@ TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set.
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
       mutate(date = date(created_at)) %>% 
       count(date, has_sesame_ht)
+      
+ 
  
  
     ## # A tibble: 20 x 3
