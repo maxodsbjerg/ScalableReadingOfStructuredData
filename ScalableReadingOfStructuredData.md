@@ -91,7 +91,7 @@ INDSÆT PREREQ
 
 # Exploration of a dataset's timely dispersion
 
-SKRIV KORT TEKST OM HVORFOR DET ER VIGTIGT sådan akademisk set
+Exploring a dataset’s timely dimensions can facilitate the first analytical review of the dataset. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around Sesame Street), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collection according to different periods in art history.
 
 ## Example of a dataset's timely dispersion: Twitter data
 
