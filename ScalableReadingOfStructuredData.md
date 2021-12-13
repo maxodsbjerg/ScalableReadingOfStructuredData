@@ -93,7 +93,7 @@ INDSÆT PREREQ
 
 SKRIV KORT TEKST OM HVORFOR DET ER VIGTIGT sådan akademisk set
 
-# Example of a dataset's timely dispersion: Twitter data
+## Example of a dataset's timely dispersion: Twitter data
 
 Skriv tekst om at loade biblioteker.
 
@@ -130,7 +130,7 @@ date, but also the hour, minute and second of the Tweet. This is
 obtained with the `date()`-function from the “lubridate”-packages, which
 is told that it should extract the date from the “created\_at”-column.  
 Lastly we use the `count`-function from the “tidyverse”-package to count
-TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set.
+TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
 
     sesamestreet_data %>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -200,11 +200,12 @@ Remember to changes the titles in the code below to match your specific dataset 
 ![](rmarkdowns/2_tidslig_udvikling_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
 You should now have a graph dipicting the timely dispersion of tweets in
-your dataset.
+your dataset. We will now proceed with the binary distinctive features.
 
-# Who remembers
+# Explorations of binary relations in a dataset
+HVORFOR ER DET VIGTIGT hva
 
-## How many of the tweets from our data are created by verified accounts
+## Example of a binary exploration: Twitter data
 
 In this first example of data processing you will take each step of it
 to show the logic of the pipe (`%>%`) in R. Once you get a hold of this
@@ -262,11 +263,10 @@ verified and non-verified tweets:
     ## 2 TRUE        64  2432  2.63
 
 The next step is to visualize this result. Here you use the
-“ggplot2”-package to create a bar chart:
+“ggplot2”-package to create a column chart:
 
-The difference from the earlier visualisations showing tweets over time
-is here the type of plot used, this is specified with the `geom_col()`
-argument.
+In contrast to the earlier visualisations which showed tweets over time
+we now use the `geom_col-functions` in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
 
     sesamestreet_data %>% 
       count(verified) %>% 
@@ -282,12 +282,9 @@ argument.
           caption = "Total number of tweets: 2413") + 
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
-![](20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
-In this next code chunk we save the result for the article.
+![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
-    ggsave("20211213_sesammestreet_tweets_dispersed_on_verified_status.png", width = 8, height = 5, dpi = 800)
-
-# Means of different interaction count dispersed on the verified status in the sesammestreet dataset
+## Means of different interaction count dispersed on the verified status in the sesammestreet dataset
 
 In the code below you group the dataset based on each tweets verified
 status. After using the grouping function all operations afterwards will
