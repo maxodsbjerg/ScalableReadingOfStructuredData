@@ -71,6 +71,8 @@ verified and non-verified tweets:
       mutate(total = nrow(sesamestreet_data)) %>% 
       mutate(pct = (n / total) * 100)
 
+<!-- tsk -->
+
     ## # A tibble: 2 x 4
     ##   verified     n total   pct
     ## * <lgl>    <int> <int> <dbl>
@@ -116,6 +118,8 @@ non-verified and verified accounts.
     sesamestreet_data %>% 
       group_by(verified) %>% 
       summarise(gns = mean(favorite_count))
+
+<!-- tsk -->
 
     ## # A tibble: 2 x 2
     ##   verified     gns
