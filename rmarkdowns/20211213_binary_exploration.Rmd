@@ -20,7 +20,7 @@ sesamestreet_data <- search_tweets("sesamestreet", n = 18000, include_rts = TRUE
 
 # Who remembers
 
-## How many of the tweets from our data are verified accounts
+## How many of the tweets from our data are created by verified accounts
 
 In this first example of data processing you will take each step of it to show the logic of the pipe (`%>%`) in R. Once you get a hold of this idea the remainder of the data processing will be more easy to read and understand. The overall goal of this section is to find out how the tweets disperses on non-verified and verified account and visualize the result . 
 
@@ -30,7 +30,7 @@ Using the pipe `%>%` you pass the data on downwards - the data is flowing throug
 sesamestreet_data %>% 
   count(verified)
 ```
-So now you have the count - but you would prefer to have these figures in percentage. Therefore our next step will be adding another pipe and a pieces of code creating a new column holding the number of total tweets in our dataset - this is necessary for calculating the percentage later. You get the total number of tweets by using the `nrow`-function that returns the number of rows from a dataframe. In our dataset one row = one tweet:
+So now you have the count - but it would make more sence to have these figures in percentage. Therefore our next step will be adding another pipe and a pieces of code creating a new column holding the number of total tweets in our dataset - this is necessary for calculating the percentage later. You get the total number of tweets by using the `nrow`-function that returns the number of rows from a dataframe. In our dataset one row = one tweet:
 
 ```{r}
 sesamestreet_data %>% 
