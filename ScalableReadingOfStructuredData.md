@@ -334,8 +334,10 @@ which creates three bar charts for each type of interaction:
 ![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 
-# Filtering for original tweets and observing the minimum favorite\_count value for the top 20
+# Reproducable and Systematic Selection for Close Reading
+Hvorfor er det egentlig at det vigtigt? 
 
+## Example of Reproducable and Systematic Selection for Close Reading: Twitter data
 To examine original tweets only, we start by filtering away all the
 tweets that are “retweets”.
 
@@ -367,7 +369,7 @@ Looking at the column favorite\_count, you can now observe that the top
 are variables, that may change, if you choose to reproduce this example
 by yourself. Be sure to check these numbers.
 
-# Creating a new dataset of the top 20 most liked tweets (all accounts)
+## Creating a new dataset of the top 20 most liked tweets (all accounts)
 
 As you now know that the minimum favorite\_count value is 50, you add a
 second `filter`-function to our previous code chunk which retains all
@@ -382,7 +384,7 @@ create a new dataset called
       filter(favorite_count > 50) %>% 
       arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_50
 
-# Inspecting our new dafaframe (all)
+## Inspecting our new dafaframe (all)
 
 To create a quick overview of our new dataset, you use the
 `select`-function from the dplyr-package to isolate the variables you
@@ -402,7 +404,7 @@ values. It is therefore much easier to inspect, than looking though the
 whole dataset *sesamestreet\_data\_favorite\_count\_over\_50* in our
 Global Environment.
 
-# Exporting the new dataset as a JSON file
+## Exporting the new dataset as a JSON file
 
 To export our new dataset out of our R environment and save it as a JSON
 file, you use the `toJSON`-function from the jsonlite-package.
@@ -427,7 +429,7 @@ your machine
 
     write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
 
-# Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
+## Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
 
 You now wish to see the top 20 most liked tweets by the non-verified
 accounts.
@@ -463,7 +465,7 @@ dataset in our Global Environment called
       filter(favorite_count > 8) %>% 
       arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
 
-# Inspecting our new dafaframe (non-verified)
+## Inspecting our new dafaframe (non-verified)
 
 We once again create a quick overview of our new dataset by using the
 `select` and `arrange`-function as in before, and inspect our chosen
