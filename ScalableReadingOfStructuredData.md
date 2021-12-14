@@ -417,7 +417,7 @@ dplyr package which is part of tidyverse.
 
 As you can see in the Global Environment, your data *sesamestreet\_data*
 has a total of 2435 observations (the number will vary depending on when you collected your data). After running the chunk of code, you
-can now read off your returned data.frame how many unique tweets your dataset contains. In our example it was 852 - remember yours will vary.  
+can now read off your returned dataframe how many unique tweets your dataset contains. In our example it was 852 - remember yours will vary.  
 
 Looking at the column favorite\_count, you can now observe how many likes you top-20 lies above. In our example the top-20 had a count above 50. These numbers
 are variables, that changes, when you choose to reproduce this example
@@ -431,7 +431,7 @@ rows with a favorite\_count value over 50.
 
 As you have now captured the top 20 most liked tweets, you can now
 create a new dataset called
-*sesamestreet\_data\_favorite\_count\_over\_18*.
+*sesamestreet\_data\_favorite\_count\_over\_50*.
 
     sesamestreet_data %>% 
       filter(is_retweet == FALSE) %>%
@@ -453,7 +453,7 @@ You then arrange them after their favorite\_count value by using the
       arrange(desc(favorite_count))
 (Output removed because of privacy reasons) 
 
-This code chunk returns a data.frame containing the previously stated
+This code chunk returns a dataframe containing the previously stated
 values. It is therefore much easier to inspect, than looking though the
 whole dataset *sesamestreet\_data\_favorite\_count\_over\_50* in our
 Global Environment.
@@ -467,9 +467,9 @@ To make sure our data is stored as manageable and structured as
 possible, all of our close reading data files are dubbed with the same
 information:
 
-1.  How many tweets/observations the data contains.
-2.  What variable the data is arranged after.
-3.  Whether the tweets are from all types of accounts or just the
+1.  How many tweets/observations does the dataset contain.
+2.  Which variablea is the data arranged after.
+3.  Whether the tweets are from all types of accounts or just
     verified accounts.
 4.  The year the data was produced.
 
@@ -478,14 +478,14 @@ information:
     Top_20_liked_tweets <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_50)
 
 After converting your data to a JSON file format, you are able to use
-the `write`-function from R basics to export the data and save it on
+the `write`-function from base R to export the data and save it on
 your machine
 
     write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
 
 ## Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
 
-You now wish to see the top 20 most liked tweets by the non-verified
+You now wish to see the top 20 most liked tweets by non-verified
 accounts.
 
 To do this, you follow the same workflow as before, but in our first
@@ -500,16 +500,13 @@ been produced by verified accounts.
       arrange(desc(favorite_count))
 (Output removed because of privacy reasons)
 
-You observe in the returned data.frame that 809 of the total 2435
-observations are not retweets AND are from non-verified accounts.
+Here you can observe how many of the total 2435 tweets that were not retweets and were created by non-verified accounts. In our example the count was 809. However, this number will not be the same, in your case. 
 
-Looking again at the favorite\_count column, you observe that the top 20
-most commented tweets by non-verified accounts all have a count that is
-above 15. This time, 2 tweets share the 20th and 21th place. You
+Looking again at the favorite\_count column, you can now observe how many likes you top-20 lies above. In our example the top-20 tweets from non-verified accounts had a count above 15. This time, 2 tweets share the 20th and 21th place. In this case you
 therefore get the top 21 most liked tweets for this analysis.
 
 You can now filter tweets that have been liked more than 15 times, and
-arrange them from the most commented to the least, and create a new
+arrange them from the most liked to the least, and create a new
 dataset in our Global Environment called
 *sesamestreet\_data\_favorite\_count\_over\_15\_non\_verified*.
 
@@ -523,7 +520,7 @@ dataset in our Global Environment called
 
 We once again create a quick overview of our new dataset by using the
 `select` and `arrange`-function as in before, and inspect our chosen
-values in the returned data.frame.
+values in the returned dataframe.
 
     sesamestreet_data_favorite_count_over_15_non_verified %>% 
       select(favorite_count, screen_name, verified, text) %>% 
@@ -545,7 +542,7 @@ or you can inspect the text column of the datasets in your current R
 Global Environment.
 
 # Tips and tricks 
-As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data collected in a different way. 
+As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data that have not been collected with the `rtweet`-package. 
 
 If you have collected your data by following the lesson [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) you will discover that the date of tweets is shown in a way, which is noncompatible with the code from this lesson. To make the code compatible with data from *Beginner's Guide to Twitter Data* the date column has to be manipulated with regular expressions. These are quite complex and are used to tell the computer what part of the text in the column is to be understood as day, month, year and time of day:
 
@@ -558,7 +555,7 @@ If you have collected your data by following the lesson [Beginner's Guide to Twi
     df$Time <- format(as.POSIXct(df$date,format="%Y-%m-%d %H:%M:%S"),"%H:%M:%S")
     df$date <- format(as.POSIXct(df$date,format="%Y.%m-%d %H:%M:%S"),"%Y-%m-%d")
 
-Some other columns that does not have the same names in our data as in the data extracted with the lesson *Beginner's Guide to Twitter Data* are our columns `verified`and `text` that are called `user.verified` and `full_text`. Here you have two options either you change the code, so that everywhere `verified` or `text` occurs you write `user.verified` or `full_text` instead. Another approch is to change the column names, which can be done with the following code:
+Some other columns that does not have the same names in our data as in the data extracted with the lesson *Beginner's Guide to Twitter Data* are our columns `verified`and `text` that are called `user.verified` and `full_text`. Here you have two options. Either you change the code, so that everywhere `verified` or `text` occurs you write `user.verified` or `full_text` instead. Another approch is to change the column names in the dataframe, which can be done with the following code:
 
     df %>% 
      rename(verified = user.verified) %>% 
