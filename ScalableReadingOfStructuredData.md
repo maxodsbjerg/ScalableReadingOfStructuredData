@@ -541,7 +541,7 @@ ready to be loaded into another R Markdown for a close reading analysis,
 or you can inspect the text column of the datasets in your current R
 Global Environment.
 
-# Tips and tricks 
+# Tips for working with twitter data
 As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data that have not been collected with the `rtweet`-package. 
 
 If you have collected your data by following the lesson [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) you will discover that the date of tweets is shown in a way, which is noncompatible with the code from this lesson. To make the code compatible with data from *Beginner's Guide to Twitter Data* the date column has to be manipulated with regular expressions. These are quite complex and are used to tell the computer what part of the text in the column is to be understood as day, month, year and time of day:
