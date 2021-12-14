@@ -112,7 +112,7 @@ dataframe based on a free-text search on the term “sesamestreet” to follow o
     sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
 
 
-# Step 1: Exploration of a dataset's timely dispersion
+# Step 1: Exploration of a Dataset's Timely Dispersion
 Exploring a dataset’s timely dimensions can facilitate the first analytical review of your data. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around *Sesame Street*), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing as to it signifigance. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could also relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collections according to different periods in art history to which are represented the most or the least. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3.
 
 
@@ -229,7 +229,7 @@ Remember to changes the titles in the code below to match your specific dataset 
 You should now have a graph dipicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
 
-# Step 2: Explorations of binary relations in a dataset
+# Step 2: Explorations of Binary Relations in a Dataset
 Binary exploration of a dataset can be a first and, compared to other digital methods, relatively simple way to explore important relations in your dataset. Binary relations are easy to count using computer code and can reveal systematic and defining structures in your data. In our case, we were interested in the power relations on Twitter and in the public sphere more generally. We, therefore, explored the differences between so-called verified and non-verified accounts, as verified accounts are maked as such due to their public status outside of the platform. You might be interested in how many tweets were retweets or originals. Or, suppose you were working with data from the National Gallery. In that case, you might wanted to explore the representation of male versus female artists, Danish versus international artists, or paintings versus other artworks in their collections.  
  
 The binary relations can form a context for your close reading of datapoints selected in step 3. Knowing the distribution of data in two categories will also enable you to establish a single datapoint’s representativity vis-à-vis this category's distribution in the entire dataset. For instance, if you in step 3 chose to work on the top 20 liked tweets, you would be able to see that even if there were many tweets from verified accounts in this select pool, these accounts were not well represented in the overall dataset; the top 20 liked tweets you have selected are thus not representative ot the tweets from most accounts in your dataset, they represent a small, but much "liked" percentage. Or, if you choose to work on the top 20 displayed artworks in a dataset from the National Gallery, a binary exploration of Danish versus non-Danish artists might enable to see that even if the top 20 most displayed work were all painted by international artists, these artists were otherwise poorly represented in the National Gallery's collections overall.
@@ -383,7 +383,7 @@ How many datapoints you choose to close read will dependent on what phenomena yo
 If you were working on data from the National Gallery, you might want to select the top 5 or 10 most displayed or borrowed artworks from Danish and international artists, to furter investigate their differences or commonalities doing a close reading of their artists, type of artwork, motive, content, size, period in art history, etc.  
 
 
-## Example of Reproducable and Systematic Selection for Close Reading: Twitter data
+## Example of reproducable and systematic selection for close reading: Twitter data
 In this example you are interested in selecting the top 20 liked tweets overall. Knowing that many of these tweets probably are from verified accounts, you also want to select the top 20 tweets from non-verified accounts to be able to compare and contrast the two categories.  
 
 To examine original tweets only, we start by filtering away all the
@@ -534,7 +534,7 @@ Global Environment.
 
 You are now ready to copy the URL's from the dataframe and inspect the individual tweets on twitter. Remember to closely observe Twitter's "Terms and Agreements" and act accordingly. The agreement, for instance, means that you are not allowed to share your dataset with others except for as a list of tweet-ids; that off-twitter matching of  accounts and individuals need to follow very strict rules and has many limits; and that you are restrictied in various ways if you want to publish your data or cite tweets, etc.  
 
-# Tips for working with twitter data
+# Tips for working with Twitter Data
 As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data that have not been collected with the `rtweet`-package. 
 
 If you have collected your data by following the lesson [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) you will discover that the date of tweets is shown in a way, which is noncompatible with the code from this lesson. To make the code compatible with data from *Beginner's Guide to Twitter Data* the date column has to be manipulated with regular expressions. These are quite complex and are used to tell the computer what part of the text in the column is to be understood as day, month, year and time of day:
