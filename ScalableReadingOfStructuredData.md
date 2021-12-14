@@ -93,7 +93,7 @@ If you already have a JSON file containing your twitter data, you can
 use the `fromJSON`-function in the `jsonlite`-package to upload the data
 into your R environment.
 
-### Acquiring a small test dataset on the go
+## Acquiring a small test dataset on the go
 
 ### rtweet
 
@@ -322,7 +322,7 @@ we now use the `geom_col-functions` in order to create columns. When you start w
 
 ![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
-## Interaction count dispersed on verified status
+### Interaction count dispersed on verified status
 
 In this part of the example you want to investigate how much people interact (like) with tweets from verified accounts versus tweets from non-verified accounts. Contrasting the interaction level of these two account types will help you estimate whether the less represented verified accounts anyway hold much power because people interact a lot more with their tweets than the tweets from non-verified accounts. 
 
@@ -378,14 +378,16 @@ which creates three bar charts for each type of interaction:
 # Step 3: Reproducable and Systematic Selection for Close Reading
 One of the great advantages of combining close and distant reading is the possibility it presents for making a systematic and reproduceable selection of datapoints for close reading. When you have explored your dataset with two different kinds of distant readings in step 1 and step 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to further unpack and explore interesting trends in your data and chosen phenomena, or other feature of interest, to investigate in depth. 
 
-How many datapoints you choose to close read will dependent on what phenomena you are researching and how much time you have, and how complex the data is (for instance, analysing individual artwork might be much more time consuming than reading individual tweets—but it of course depends on your purpose). It is, therefore, important that you are systematical in your selection of datapoints in order to ensure compliance with your research questions.  
+How many datapoints you choose to close read will dependent on what phenomena you are researching, how much time you have, and how complex the data is. For instance, analysing individual artwork might be much more time consuming than reading individual tweets—but it of course depends on your purpose. It is, therefore, important that you are systematic in your selection of datapoints in order to ensure compliance with your research questions. In our case, we wanted to know more about how the top-liked tweets represented *Sesame Street*; how did they talk about the show and its history, did they link to other media, and how was the show represented visually, for instance with pictures, links to videos, memes, etc? Knowing the interesting relationship between the little representation, but high interaction level of tweets from verified accounts, we wanted to do a close reading of the top 20 liked tweets not only overall, but also from the top 20 non-verified accounts to see if these were differet in the way they talked about the show and its history. We chose the top 20 because this seemed like a task we could actually manage within the time we had at our disposal.   
 
-In the example related to step 2 above, we saw how tweets produced by verified twitter accounts have a significantly higher interaction count than tweets made by non-verified accounts. Knowing that a tweet is maximum 280 characters long and understanding the relation between the two types of tweets’ interaction level, it is for this close reading of tweets suitable to extract the top 20 most liked tweets by both verified and non-verified users for a systematic close reading.  
+If you were working on data from the National Gallery, you might want to select the top 5 or 10 most displayed or borrowed artworks from Danish and international artists, to furter investigate their differences or commonalities doing a close reading of their artists, type of artwork, motive, content, size, period in art history, etc.  
 
 
 ## Example of Reproducable and Systematic Selection for Close Reading: Twitter data
+In this example you are interested in selecting the top 20 liked tweets overall. Knowing that many of these tweets probably are from verified accounts, you also want to select the top 20 tweets from non-verified accounts to be able to compare and contrast the two categories.  
+
 To examine original tweets only, we start by filtering away all the
-tweets that are “retweets”.
+tweets that are "retweets."
 
 Viewing the data *sesamestreet\_data* in the Global Environment, you see
 that the column is\_retweet indicates whether a tweet is a retweet by
@@ -406,13 +408,13 @@ dplyr package which is part of tidyverse.
 
 As you can see in the Global Environment, your data *sesamestreet\_data*
 has a total of 2435 observations (the number will vary depending on when you collected your data). After running the chunk of code, you
-can now read off your returned dataframe how many unique tweets your dataset contains. In our example it was 852 - remember yours will vary.  
+can now read off your returned dataframe how many unique tweets your dataset contains. In our example it was 852, remember yours will vary.  
 
 Looking at the column favorite\_count, you can now observe how many likes you top-20 lies above. In our example the top-20 had a count above 50. These numbers
-are variables, that changes, when you choose to reproduce this example
+are variables that changes when you choose to reproduce this example
 by yourself. Be sure to check these numbers.
 
-## Creating a new dataset of the top 20 most liked tweets (all accounts)
+### Creating a new dataset of the top 20 most liked tweets (all accounts)
 
 As you now know that the minimum favorite\_count value is 50, you add a
 second `filter`-function to our previous code chunk which retains all
@@ -427,7 +429,7 @@ create a new dataset called
       filter(favorite_count > 50) %>% 
       arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_50
 
-## Inspecting our new dafaframe (all)
+### Inspecting our new dafaframe (all)
 
 To create a quick overview of our new dataset, you use the
 `select`-function from the dplyr-package to isolate the variables you
@@ -447,7 +449,7 @@ values. It is therefore much easier to inspect, than looking though the
 whole dataset *sesamestreet\_data\_favorite\_count\_over\_50* in our
 Global Environment.
 
-## Exporting the new dataset as a JSON file
+### Exporting the new dataset as a JSON file
 
 To export our new dataset out of our R environment and save it as a JSON
 file, you use the `toJSON`-function from the jsonlite-package.
@@ -468,11 +470,11 @@ information:
 
 After converting your data to a JSON file format, you are able to use
 the `write`-function from base R to export the data and save it on
-your machine
+your machine.
 
     write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
 
-## Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
+### Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
 
 You now wish to see the top 20 most liked tweets by non-verified
 accounts.
@@ -505,7 +507,7 @@ dataset in our Global Environment called
       filter(favorite_count > 8) %>% 
       arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
 
-## Inspecting our new dafaframe (non-verified)
+### Inspecting our new dataframe (non-verified)
 
 We once again create a quick overview of our new dataset by using the
 `select` and `arrange`-function as in before, and inspect our chosen
@@ -516,7 +518,7 @@ values in the returned dataframe.
       arrange(desc(favorite_count))
 <span style="color: green">(Output removed because of privacy reasons)</span>
 
-## Exporting the new dataset as a JSON file
+### Exporting the new dataset as a JSON file
 
 Once again you use the `toJSON`-function to export our data into a local
 JSON file.
@@ -529,6 +531,8 @@ You should now have two JSON files stored in your designated directory,
 ready to be loaded into another R Markdown for a close reading analysis,
 or you can inspect the text column of the datasets in your current R
 Global Environment.
+
+You are now ready to copy the URL's from the dataframe and inspect the individual tweets on twitter. Remember to closely observe Twitter's "Terms and Agreements" and act accordingly. The agreement, for instance, means that you are not allowed to share your dataset with others except for as a list of tweet-ids; that off-twitter matching of  accounts and individuals need to follow very strict rules and has many limits; and that you are restrictied in various ways if you want to publish your data or cite tweets, etc.  
 
 # Tips for working with twitter data
 As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data that have not been collected with the `rtweet`-package. 
