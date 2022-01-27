@@ -109,7 +109,8 @@ If you have not already acquired some Twitter data and wish to follow
 the coding examples step-by-step, you can use your twitter account and
 the `search_tweets()`-function from the “rtweet”-package to import
 twitter data into your R environment. This will return up to 18000
-tweets from the past 10 days. Copy the code chunk below, to generate a
+tweets from the past 10 days. The data will be structured in the form of a "dataframe". Much like a spreadsheet, a dataframe organizes your data into a 2-dimensional table of rows and columns.
+By copying the code chunk below, you will be able to generate a
 dataframe based on a free-text search on the term “sesamestreet” to follow our example.
 
     sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
@@ -392,12 +393,9 @@ In this example you are interested in selecting the top 20 liked tweets overall.
 To examine original tweets only, we start by filtering away all the
 tweets that are "retweets."
 
-Viewing the data *sesamestreet\_data* in the Global Environment, you see
-that the column is\_retweet indicates whether a tweet is a retweet by
-the values TRUE or FALSE. You are therefore able to use the
-`filter`-function to retain all rows stating that the tweet is not a
-retweet.
+At the top right corner of the R Studios interface, you will find your R "Global Environment" containing the dataframe *sesamestreet\_data*. By clicking the dataframe, you will be able to view the rows and columns containing your twitter data. Looking to the column is\_retweet, you will see that this column indicates whether a tweet is a retweet by the values TRUE or FALSE. 
 
+Going back to your R Markdown, you are now able to use the `filter`-function to retain all rows stating that the tweet is not a retweet.
 You then arrange the remaining tweets by the tweets’ favorite count
 which is found in the favorite\_count column.
 
@@ -413,7 +411,7 @@ As you can see in the Global Environment, your data *sesamestreet\_data*
 has a total of 2435 observations (the number will vary depending on when you collected your data). After running the chunk of code, you
 can now read off your returned dataframe how many unique tweets your dataset contains. In our example it was 852, remember yours will vary.  
 
-Looking at the column favorite\_count, you can now observe how many likes you top-20 lies above. In our example the top-20 had a count above 50. These numbers
+Looking at the column favorite\_count, you can now observe how many likes your top-20 lies above. In our example the top-20 had a count above 50. These numbers
 are variables that changes when you choose to reproduce this example
 by yourself. Be sure to check these numbers.
 
