@@ -67,6 +67,14 @@ If you want to reproduce the analysis we present below, using not only the overa
 1. Using one of Twitter’s APIs, e.g. their freely available so-called "Essential" API which we used to retrieve the dataset used in the example (see more about APIs this section to the [Introduction to Populating a Website with API Data](https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api)). This link will take you to [Twitter's API options](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api) 
 2. Using the [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) from the Programming Historian. But rather than choosing a CSV output, choose a JSON.
 
+In R, you work with packages, each adding numerous functionalities to the core functions of R. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this section of lesson [Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the `library()` function as below:
+
+    library(rtweet)
+    library(tidyverse)
+    library(lubridate)
+    library(jsonlite)
+    
+
 To follow the coding examples, make sure you have installed and loaded
 the following packages in R:
 
@@ -123,13 +131,6 @@ Exploring a dataset’s chronological dimensions can facilitate the first analyt
 ## Example of a dataset's timely dispersion: Twitter data
 
 In this example, you are interested in how much *Sesame Street* is talked about on Twitter during a given period of time. We also want to know how many tweets used the official hashtag "\#sesamestreet" during this period.
-
-In R, you work with packages, each adding numerous functionalities to the core functions of R. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this section of lesson [Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the `library()` function as below:
-
-    library(rtweet)
-    library(tidyverse)
-    library(lubridate)
-    library(jsonlite)
 
 
 In the following, we start of with some data processing before moving on
