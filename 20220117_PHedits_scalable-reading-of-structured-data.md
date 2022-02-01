@@ -152,7 +152,9 @@ told what it is detecting. Here we use the `regex()`-function within
 `str_detect()` and by doing that we can specify that we are interested
 in all variants of the hashtag (eg \#SesameStreet, \#Sesamestreet,
 \#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting
-"ignore\_case = TRUE".
+"ignore\_case = TRUE". The `regex()`-function applies a regular expression to your data.
+Regular expressions can be seen as an extendend search-and-replace function. if you want to explore regular expressions further you can read more in the article 
+[Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions).
 
 The next step is another `mutate()`-function, where we create a new
 column "date". This column will contain just the date of the tweets
