@@ -101,7 +101,7 @@ internet. For more information on the jsonlite-package see
 <https://cran.r-project.org/web/packages/jsonlite/index.html>[^3]
 
 If you already have a JSON file containing your twitter data, you can
-use the `fromJSON`-function in the `jsonlite`-package to upload the data
+use the `fromJSON`-function in the "jsonlite"-package to upload the data
 into your R environment.
 
 ## Acquiring a small test dataset on the go
@@ -152,7 +152,7 @@ told what it is detecting. Here we use the `regex()`-function within
 `str_detect()` and by doing that we can specify that we are interested
 in all variants of the hashtag (eg \#SesameStreet, \#Sesamestreet,
 \#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting
-"ignore\_case = TRUE". The `regex()`-function applies a regular expression to your data.
+"ignore\_case = TRUE" in the `regex()`-function which applies a regular expression to your data.
 Regular expressions can be seen as an extendend search-and-replace function. if you want to explore regular expressions further you can read more in the article 
 [Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions).
 
@@ -206,7 +206,7 @@ To pick up where we left in the previous code chunk, we continue with the
 This function is told that it should put date on the x-axis and the
 counted number of TRUE/FALSE-values on the y-axis. The next line of the
 creation of the visualisation is `geom_line()`,where we specify
-linetype=has\_sesame\_ht, thus creating two lines for; one for
+"linetype=has\_sesame\_ht", thus creating two lines for; one for
 TRUE and one for FALSE.
 
 The lines of code following the `geom_line()` argument tweaks the
@@ -216,7 +216,7 @@ changes the looks of the x- and y-axis, respectively. At last, the
 `labs()` and `guides()` arguments are used to create descriptive text on
 the visualisation.
 
-Remember to change the titles in the code below to match your specific dataset (as we wrote above, you are probably not doing this on the 13th December 2021). You'll find the titles under `labs`.
+Remember to change the titles in the code below to match your specific dataset (as we wrote above, you are probably not doing this on the 13th December 2021). You'll find the titles under `labs()`.
 
     sesamestreet_data%>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -275,7 +275,7 @@ figures in percentage. Therefore our next step will be adding another
 pipe and a piece of code creating a new column holding the number of
 total tweets in our dataset, this is necessary for calculating the
 percentage later. You get the total number of tweets by using the
-`nrow`-function that returns the number of rows from a dataframe. In our
+`nrow()`-function that returns the number of rows from a dataframe. In our
 dataset one row = one tweet:
 
     sesamestreet_data %>% 
@@ -308,10 +308,10 @@ verified and non-verified tweets:
     ## 2 TRUE        64  2432  2.63
 
 The next step is to visualize this result. Here you use the
-"ggplot2" package to create a column chart:
+"ggplot2"-package to create a column chart:
 
 In contrast to the earlier visualisations which showed tweets over time
-you now use the `geom_col-functions` in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
+you now use the `geom_col`-function in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
 
     sesamestreet_data %>% 
       count(verified) %>% 
@@ -338,8 +338,8 @@ status. After using the grouping function all operations afterward will
 be done groupwise. In other words all the tweets coming from non
 verified-accounts and all the tweets coming from verified accounts will
 be treated as groups. The next step is to use the summarise-function to
-calculate the mean (gns) of favorite\_count for within tweets from
-non-verified and verified accounts ("favorite" is the datasets name for "like").
+calculate the mean (gns) of "favorite\_count" for within tweets from
+non-verified and verified accounts ("favorite" is the dataset's name for "like").
 
     sesamestreet_data %>% 
       group_by(verified) %>% 
@@ -396,11 +396,11 @@ In this example you are interested in selecting the top 20 liked tweets overall.
 To examine original tweets only, we start by filtering away all the
 tweets that are "retweets."
 
-At the top right corner of the R Studios interface, you will find your R "Global Environment" containing the dataframe *sesamestreet\_data*. By clicking the dataframe, you will be able to view the rows and columns containing your twitter data. Looking to the column is\_retweet, you will see that this column indicates whether a tweet is a retweet by the values TRUE or FALSE. 
+At the top right corner of the R Studios interface, you will find your R "Global Environment" containing the dataframe *sesamestreet\_data*. By clicking the dataframe, you will be able to view the rows and columns containing your twitter data. Looking to the column "is\_retweet", you will see that this column indicates whether a tweet is a retweet by the values TRUE or FALSE. 
 
 Going back to your R Markdown, you are now able to use the `filter`-function to retain all rows stating that the tweet is not a retweet.
 You then arrange the remaining tweets by the tweets’ favorite count
-which is found in the favorite\_count column.
+which is found in the "favorite\_count" column.
 
 Both the `filter`-function and the `arrange`-function come from the
 dplyr package which is part of tidyverse.
@@ -414,15 +414,15 @@ As you can see in the Global Environment, your data *sesamestreet\_data*
 has a total of 2435 observations (the number will vary depending on when you collected your data). After running the chunk of code, you
 can now read off your returned dataframe how many unique tweets your dataset contains. In our example it was 852, remember yours will vary.  
 
-Looking at the column favorite\_count, you can now observe how many likes your top-20 lies above. In our example the top-20 had a count above 50. These numbers
+Looking at the column "favorite\_count", you can now observe how many likes your top-20 lies above. In our example the top-20 had a count above 50. These numbers
 are variables that changes when you choose to reproduce this example
 by yourself. Be sure to check these numbers.
 
 ### Creating a new dataset of the top 20 most liked tweets (verified and non-verfied accounts)
 
-As you now know that the minimum favorite\_count value is 50, you add a
+As you now know that the minimum "favorite\_count" value is 50, you add a
 second `filter`-function to our previous code chunk which retains all
-rows with a favorite\_count value over 50.
+rows with a "favorite\_count" value over 50.
 
 As you have now captured the top 20 most liked tweets, you can now
 create a new dataset called
@@ -440,7 +440,7 @@ To create a quick overview of our new dataset, you use the
 wish to inspect. In this case, you wish to isolate the columns
 favorite\_count, screen\_name, verified and text.
 
-You then arrange them after their favorite\_count value by using the
+You then arrange them after their "favorite\_count" value by using the
 `arrange`-function.
 
     sesamestreet_data_favorite_count_over_50 %>% 
@@ -485,7 +485,7 @@ accounts.
 
 To do this, you follow the same workflow as before, but in our first
 code chunk, you include an extra `filter`-function from the
-dplyr-package which retains all rows with the value FALSE in the
+"dplyr"-package which retains all rows with the value FALSE in the
 verified column, thereby removing all tweets from our data which have
 been produced by verified accounts.
 
@@ -497,7 +497,7 @@ been produced by verified accounts.
 
 Here you can observe how many of the total 2435 tweets that were not retweets and were created by non-verified accounts. In our example the count was 809. However, this number will not be the same, in your case. 
 
-Looking again at the favorite\_count column, you can now observe how many likes you top-20 lies above. In our example the top-20 tweets from non-verified accounts had a count above 15. This time, 2 tweets share the 20th and 21th place. In this case you
+Looking again at the "favorite\_count" column, you can now observe how many likes you top-20 lies above. In our example the top-20 tweets from non-verified accounts had a count above 15. This time, 2 tweets share the 20th and 21th place. In this case you
 therefore get the top 21 most liked tweets for this analysis.
 
 You can now filter tweets that have been liked more than 15 times, and
@@ -552,7 +552,7 @@ If you have collected your data by following the lesson [Beginner's Guide to Twi
     df$Time <- format(as.POSIXct(df$date,format="%Y-%m-%d %H:%M:%S"),"%H:%M:%S")
     df$date <- format(as.POSIXct(df$date,format="%Y.%m-%d %H:%M:%S"),"%Y-%m-%d")
 
-Some other columns that do not have the same names in our data as in the data extracted with the lesson *Beginner's Guide to Twitter Data* are our columns `verified`and `text` that are called `user.verified` and `full_text`. Here you have two options. Either you change the code, so that everywhere `verified` or `text` occurs you write `user.verified` or `full_text` instead. Another approch is to change the column names in the dataframe, which can be done with the following code:
+Some other columns that do not have the same names in our data as in the data extracted with the lesson *Beginner's Guide to Twitter Data* are our columns "verified" and "text" that are called "user.verified" and "full_text". Here you have two options. Either you change the code, so that everywhere "verified" or "text" occurs you write "user.verified" or "full_text" instead. Another approch is to change the column names in the dataframe, which can be done with the following code:
 
     df %>% 
      rename(verified = user.verified) %>% 
