@@ -1,6 +1,6 @@
-l40/156: what is meant by 'timely dimensions'? Is this about chronology? *Changed throughout to chronology/chronologically*
-l50: is 'solved' the correct word choice here? *Changed to explored and answered*
-l58: is gender a binary? Solving this problem led us to rephrase this analytical step in more detail. *Section rewritten. We have tried to explain how a dataset’s existing metadata categories to create questions that can be answered using a binary logic.*
+l40/156: what is meant by 'timely dimensions'? Is this about chronology? *Changed throughout to chronology/chronologically*  
+l50: is 'solved' the correct word choice here? *Changed to explored and answered*. 
+l58: is gender a binary? Solving this problem led us to rephrase this analytical step in more detail. *Section rewritten. We have tried to explain how a dataset’s existing metadata categories to create questions that can be answered using a binary logic.*  
 l65: you should note here that is the reader doesn't have a dataset to hand, you will explain how to acquire one in the next section *has been clarified*
 l67: what does 'the free Essential' mean here? *Clarified*
 l67-8: please use the full citations to these articles (at the bottom of the page) as you would with another journal. *Have tried to use CMoS guidelines for notes?*
