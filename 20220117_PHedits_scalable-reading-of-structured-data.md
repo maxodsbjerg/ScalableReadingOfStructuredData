@@ -231,7 +231,7 @@ Remember to change the titles in the code below to match your specific dataset (
       labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
-![](./pictues/20220210_figure_1.png)
+![](/pictues/20220210_figure_1.png)
 
 You should now have a graph depicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
