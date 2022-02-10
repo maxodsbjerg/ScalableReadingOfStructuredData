@@ -1,16 +1,27 @@
-l40/156: what is meant by 'timely dimensions'? Is this about chronology? *Changed throughout to chronology/chronologically*  
+l40/156: what is meant by 'timely dimensions'? Is this about chronology? *Changed throughout to chronology/chronologically*
+
 l50: is 'solved' the correct word choice here? *Changed to explored and answered*. 
+
 l58: is gender a binary? Solving this problem led us to rephrase this analytical step in more detail. *Section rewritten. We have tried to explain how a dataset’s existing metadata categories to create questions that can be answered using a binary logic.*  
+
 l65: you should note here that is the reader doesn't have a dataset to hand, you will explain how to acquire one in the next section *has been clarified*. 
+
 l67: what does 'the free Essential' mean here? *Clarified*. 
+
 l67-8: please use the full citations to these articles (at the bottom of the page) as you would with another journal. *Have tried to use CMoS guidelines for notes?*. 
+
 l70-l117: users should be guided in using R and installing packages, for example by reference to other articles on PH. *Moved text from line 127-132 to line 70*. 
 
 l108: capitalise 'Twitter'. This should be consistent throughout. *Taken care of*. 
+
 l113: you assume that the reader knows what a 'datafarme' is. Either: briefly explain what this is, link to explanatory information, or signal that this isn't an introductory article (because introductory articles do not assume knowledge of particular programming architectures) *Updated with a short explanation*. 
+
 l119: light word choice edits. 
+
 l126: this intro to what R packages are and how to install them should come around l70-l117. *Moved text from line 127-132 to line 70*. 
+
 l134-139: light word choice edits. 
+
 l142: typo. 
 l149: mention of regex should point to guidance on regular expressions. *Added brief explanation of regex and reference to PH-article on regex*. 
 l199: what does 'our needs' refer to here? What are 'our needs' at this point in the article? *Has been clarified*. 
