@@ -111,6 +111,7 @@ dataframe based on a free-text search on the term “sesamestreet” to follow o
 
     sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
 
+Running this function will most like show, what seems to be a proces bar, but this is not the case. The number in percentage refers to how many tweets were available and delivered to you out of the total amount of tweets that matched you search. "15 %" could for instance mean that 150 tweets were delivered out 1000 tweets matching your search. There could be several reason for only receiving a limited tweets. In your case it is most likely that the tweets are outside the 10 days of tweets being returned.  
 
 # Step 1: Exploration of a Dataset's Timely Dispersion
 Exploring a dataset’s timely dimensions can facilitate the first analytical review of your data. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around *Sesame Street*), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing as to it significance. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could also relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collections according to different periods in art history to which are represented the most or the least. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3.
@@ -473,6 +474,8 @@ the `write`-function from base R to export the data and save it on
 your machine.
 
     write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
+    
+In this case we are saving to JSON, as it is better at handling three dimentional data. For instance hashtags can be stored in the same column creating a complex situation where a row in the data contains a list of hashtags present in the corresponding tweet. This is difficult to handle in a tabular format such as CSV(comma seperated values). Handling JSON-files however can be difficult compared to a CSV file. If you want to learn more af JSON-files and how to convert them to CSV see the lesson lesson [Reshaping JSON with jq](https://programminghistorian.org/en/lessons/json-and-jq)
 
 ### Creating a new dataset of the top 20 most liked tweets (non-verified accounts)
 
