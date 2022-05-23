@@ -200,7 +200,23 @@ TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. T
 
 Please beware that your data will look slightly different, as it was not collected on the same date as ours and the conversation about *Sesame Street* represented in your dataset will be different from what it was just prior to 13th December where we collected the data for our example.
 
-You are now going to visualise your results. In the code below, we have
+
+    sesamestreet_data%>% 
+      mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
+      mutate(date = date(created_at)) %>% 
+      count(date, has_sesame_ht) %>% 
+      ggplot(aes(date, n)) +
+      geom_line(aes(linetype=has_sesame_ht)) +
+      scale_linetype(labels = c("No #sesamestreet", "#sesamestreet")) +
+      scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
+      scale_y_continuous(breaks = seq(0, 400, by = 50)) +
+      theme(axis.text.x=element_text(angle=40, hjust=1)) +
+      labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
+      guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
+
+![](/pictures/20220210_figure_1.png)
+
+You are now going to visualise your results. In the code above, we have
 appended the code for the visualisation to the four lines of code above
 that transforms the data to our interest in exploring the chronology of tweets with and without the official hashtag "\#sesamestreet".  
 To pick up where we left in the previous code chunk, we continue with the
@@ -219,21 +235,6 @@ changes the looks of the x- and y-axis, respectively. At last, the
 the visualisation.
 
 Remember to change the titles in the code below to match your specific dataset (as we wrote above, you are probably not doing this on the 13th December 2021). You'll find the titles under `labs()`.
-
-    sesamestreet_data%>% 
-      mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
-      mutate(date = date(created_at)) %>% 
-      count(date, has_sesame_ht) %>% 
-      ggplot(aes(date, n)) +
-      geom_line(aes(linetype=has_sesame_ht)) +
-      scale_linetype(labels = c("No #sesamestreet", "#sesamestreet")) +
-      scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
-      scale_y_continuous(breaks = seq(0, 400, by = 50)) +
-      theme(axis.text.x=element_text(angle=40, hjust=1)) +
-      labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
-      guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
-
-![](/pictures/20220210_figure_1.png)
 
 You should now have a graph depicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
