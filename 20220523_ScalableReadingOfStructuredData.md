@@ -463,7 +463,7 @@ Global Environment.
 ### Exporting the new dataset as a JSON file
 
 To export our new dataset out of our R environment and save it as a JSON
-file, you use the `toJSON`-function from the jsonlite-package.
+file, you use the `toJSON`-function from the jsonlite-package. The JSON-file format is choosen since our twitter data is rather complex with examples of lists within rows. For example several hashtags stored as a list within a row. This situation is hard to handle in popular rectangular data formats such as csv, which is why we choose the JSON format. 
 
 To make sure our data is stored as manageable and structured as
 possible, all of our close reading data files are dubbed with the same
