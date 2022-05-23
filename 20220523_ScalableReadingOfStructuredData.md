@@ -142,28 +142,7 @@ a two-piece question:
     "\#sesamestreet".
 
 Especially the last question needs some data wranglig before it is
-possible to answer it. The process here is to create a new column which
-has the value "TRUE" if the tweet contains the hashtag and FALSE if not.
-This is done with the `mutate()`-function, which creates a new column
-called "has\_sesame\_ht". To put the TRUE/FALSE-values in this column we
-use the `str_detect()`-function. This function is told that it is
-detecting on the column "text", which contains the tweet. Next it is
-told what it is detecting. Here we use the `regex()`-function within
-`str_detect()` and by doing that we can specify that we are interested
-in all variants of the hashtag (eg \#SesameStreet, \#Sesamestreet,
-\#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting
-"ignore\_case = TRUE" in the `regex()`-function which applies a regular expression to your data.
-Regular expressions can be seen as an extendend search-and-replace function. if you want to explore regular expressions further you can read more in the article 
-[Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions).
-
-The next step is another `mutate()`-function, where we create a new
-column "date". This column will contain just the date of the tweets
-instead of the entire timestamp from Twitter that not only contains the
-date, but also the hour, minute and second of the tweet. This is
-obtained with the `date()`-function from the "lubridate"-packages, which
-is told that it should extract the date from the "created\_at"-column.  
-Lastly we use the `count`-function from the "tidyverse"-package to count
-TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
+possible to answer it. 
 
     sesamestreet_data %>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -195,6 +174,29 @@ TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. T
     ## 18 2021-12-12 TRUE             44
     ## 19 2021-12-13 FALSE            55
     ## 20 2021-12-13 TRUE             35
+    
+The process here is to create a new column which
+has the value "TRUE" if the tweet contains the hashtag and FALSE if not.
+This is done with the `mutate()`-function, which creates a new column
+called "has\_sesame\_ht". To put the TRUE/FALSE-values in this column we
+use the `str_detect()`-function. This function is told that it is
+detecting on the column "text", which contains the tweet. Next it is
+told what it is detecting. Here we use the `regex()`-function within
+`str_detect()` and by doing that we can specify that we are interested
+in all variants of the hashtag (eg \#SesameStreet, \#Sesamestreet,
+\#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting
+"ignore\_case = TRUE" in the `regex()`-function which applies a regular expression to your data.
+Regular expressions can be seen as an extendend search-and-replace function. if you want to explore regular expressions further you can read more in the article 
+[Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions).
+
+The next step is another `mutate()`-function, where we create a new
+column "date". This column will contain just the date of the tweets
+instead of the entire timestamp from Twitter that not only contains the
+date, but also the hour, minute and second of the tweet. This is
+obtained with the `date()`-function from the "lubridate"-packages, which
+is told that it should extract the date from the "created\_at"-column.  
+Lastly we use the `count`-function from the "tidyverse"-package to count
+TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
 
 Please beware that your data will look slightly different, as it was not collected on the same date as ours and the conversation about *Sesame Street* represented in your dataset will be different from what it was just prior to 13th December where we collected the data for our example.
 
