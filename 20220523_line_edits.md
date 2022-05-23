@@ -40,19 +40,19 @@ l. 540 -- 'the date of tweets is shown in a way, which is' -> 'the date of tweet
 
 l. 34 -- introduces the concept of scalable reading without explanation (only needs a small definition here, something like: ...scalable reading of structured data, a combination of close interpretation of individual texts and statistical analysis of the corpus) - HELLE
 
-#Lesson Aims before #Lesson Structure? - VICTOR
+#Lesson Aims before #Lesson Structure? - DONE
 
 l. 46 -- 'The reproducible way of selecting...' good that you're introducing examples of disciplines that could use the method, but maybe also add something about its extendibility to others in the humanities. = DONE
 
-l. 52 -- 'Had we worked on data from the National Gallery' -- rephrase, it implies a contradiction with what you said above (that it forms part of the discussion). I.e, 'In the case of the National Gallery data...' - VICTOR
+l. 52 -- 'Had we worked on data from the National Gallery' -- rephrase, it implies a contradiction with what you said above (that it forms part of the discussion). I.e, 'In the case of the National Gallery data...' - DONE
 
-l. 54 -- 'Had we worked on data from the National Gallery' -- rephrase - VICTOR
+l. 54 -- 'Had we worked on data from the National Gallery' -- rephrase - DONE
 
-l. 56 -- 'Had we worked on data from the National Gallery' -- rephrase - VICTOR
+l. 56 -- 'Had we worked on data from the National Gallery' -- rephrase - DONE
 
 #Data and Prerequisites: could not a third option be to offer a base dataset that users can get from PH to get started without having to follow other lessons? - COMMENTARY - MAX
 
-#Data and Prerequisites: add another option, 'Using the rtweet package and your own twitter account, as described below' - VICTOR
+#Data and Prerequisites: add another option, 'Using the rtweet package and your own twitter account, as described below' - DONE
 
 l. 129 (and in the section more generally, and elsewhere in the tutorial) -- the subject changes midway through the sentence: you/we - HELLE
 
