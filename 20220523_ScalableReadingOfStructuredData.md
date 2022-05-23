@@ -256,12 +256,6 @@ understand. The overall goal of this section is to find out how the
 tweets disperse on non-verified and verified accounts and visualize the
 result.
 
-Using the pipe `%>%` you pass the data on downwards - the data is
-flowing through the pipe like water! Here you pour the data to the
-`count`-function and ask it to count on the column "verified" that holds
-two values. Either it has "TRUE", then the account is verfied, or it
-has "FALSE" - then it isn’t.
-
     sesamestreet_data %>% 
       count(verified)
 
@@ -272,14 +266,18 @@ has "FALSE" - then it isn’t.
     ## * <lgl>    <int>
     ## 1 FALSE     2368
     ## 2 TRUE        64
+    
+Using the pipe `%>%` you pass the data on downwards - the data is
+flowing through the pipe like water! Here you pour the data to the
+`count`-function and ask it to count on the column "verified" that holds
+two values. Either it has "TRUE", then the account is verfied, or it
+has "FALSE" - then it isn’t.
 
 So now you have the count - but it would make more sense to have these
 figures in percentage. Therefore our next step will be adding another
 pipe and a piece of code creating a new column holding the number of
 total tweets in our dataset, this is necessary for calculating the
-percentage later. You get the total number of tweets by using the
-`nrow()`-function that returns the number of rows from a dataframe. In our
-dataset one row = one tweet:
+percentage later. 
 
     sesamestreet_data %>% 
       count(verified) %>% 
@@ -292,6 +290,10 @@ dataset one row = one tweet:
     ## * <lgl>    <int> <int>
     ## 1 FALSE     2368  2432
     ## 2 TRUE        64  2432
+    
+You get the total number of tweets by using the
+`nrow()`-function that returns the number of rows from a dataframe. In our
+dataset one row = one tweet:
 
 Using another pipe you now create a new column called "percentage" where
 you calculate and store the percentage of the dispersion between
@@ -313,9 +315,6 @@ verified and non-verified tweets:
 The next step is to visualize this result. Here you use the
 "ggplot2"-package to create a column chart:
 
-In contrast to the earlier visualisations which showed tweets over time
-you now use the `geom_col`-function in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
-
     sesamestreet_data %>% 
       count(verified) %>% 
       mutate(total = nrow(sesamestreet_data)) %>% 
@@ -332,17 +331,12 @@ you now use the `geom_col`-function in order to create columns. When you start w
 
 ![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
+In contrast to the earlier visualisations which showed tweets over time
+you now use the `geom_col`-function in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
+
 ### Interaction with verified versus non-verified accounts
 
 In this part of the example you want to investigate how much people interact with tweets from verified accounts versus tweets from non-verified accounts. We have chosen to count likes as a way to measure interaction in this example. Contrasting the interaction level of these two account types will help you estimate whether the less represented verified accounts hold much power dispite their low representation overall because people interact a lot more with their tweets than the tweets from non-verified accounts. 
-
-In the code below, you group the dataset based on each tweet's verified
-status. After using the grouping function all operations afterward will
-be done groupwise. In other words all the tweets coming from non
-verified-accounts and all the tweets coming from verified accounts will
-be treated as groups. The next step is to use the summarise-function to
-calculate the mean (gns) of "favorite\_count" for within tweets from
-non-verified and verified accounts ("favorite" is the dataset's name for "like").
 
     sesamestreet_data %>% 
       group_by(verified) %>% 
@@ -356,6 +350,14 @@ non-verified and verified accounts ("favorite" is the dataset's name for "like")
     ## 1 FALSE      0.892
     ## 2 TRUE     114.
 
+In the code above, you group the dataset based on each tweet's verified
+status. After using the grouping function all operations afterward will
+be done groupwise. In other words all the tweets coming from non
+verified-accounts and all the tweets coming from verified accounts will
+be treated as groups. The next step is to use the summarise-function to
+calculate the mean (gns) of "favorite\_count" for within tweets from
+non-verified and verified accounts ("favorite" is the dataset's name for "like").
+
 In this next step you add the result from above to a dataframe and with
 a new column "interaction" where you specify that it is
 "favorite\_count"
@@ -367,9 +369,7 @@ a new column "interaction" where you specify that it is
 
 This way you get a dataframe with the means of the different
 interactions which makes it possible to pass it on to the ggplot-package
-for visualisation, which is done below. The visualisation looks alot
-like the previous bar charts, but the difference here is `facet_wrap`,
-which creates three bar charts for each type of interaction:
+for visualisation, which is done below.
 
     interactions  %>% 
       ggplot(aes(x = verified, y = gns)) +
@@ -384,6 +384,9 @@ which creates three bar charts for each type of interaction:
 
 ![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
+The visualisation looks alot
+like the previous bar charts, but the difference here is `facet_wrap`,
+which creates three bar charts for each type of interaction:
 
 # Step 3: Reproducible and Systematic Selection of datapoints for Close Reading
 One of the great advantages of combining close and distant reading is the possibility it presents for making a systematic and reproducible selection of datapoints for close reading. When you have explored your dataset with two different kinds of distant readings in step 1 and step 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to further unpack and explore interesting trends in your data and chosen phenomena, or other features of interest, to investigate in depth. 
