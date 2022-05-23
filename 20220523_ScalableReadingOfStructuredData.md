@@ -53,7 +53,7 @@ The combination of close and distant reading introduced in this lesson is meant 
 We originally used the workflow presented below to analyze the remembrance of the American children’s television program *Sesame Street* on Twitter. We used the combined close and distant reading to find out how certain events generated discussion of *Sesame Street’s* history, which Twitter-users dominated the discourse about *Sesame Street’s* history, and which parts of the show's history they emphasised. Our example below also uses a small dataset related to tweets about *Sesame Street*. However, the same analytical framework can also be used to analyze many other kinds of structured data. To demonstrate the applicability of the workflow to other kinds of data, we discuss how it could be applied to a set of structured data from the digitized collections held by the National Gallery of Denmark. The data from the National Gallery is very different from the Twitter data used in the lesson's example track, but the general idea of using distant reading to contextualize close reading works equally well as with the Twitter data. 
 
 The workflow for scalable reading of structured data we suggest below has three steps: 
-1. **Chronological exploration of a dataset.** <br>This step suggests a chronological exploration of a dataset. In the Twitter dataset, we explore how a specific phenomenon gains traction on the platform during a certain period of time. Had we worked on data from the National Gallery, we could have analyzed the timely distribution of their collections e.g. according to acquisition year or when artworks were made.
+1. **Chronological exploration of a dataset.** <br> In the Twitter dataset, we explore how a specific phenomenon gains traction on the platform during a certain period of time. Had we worked on data from the National Gallery, we could have analyzed the timely distribution of their collections e.g. according to acquisition year or when artworks were made.
  
 2. **Exploring a dataset by creating binary-analytical categories.** <br> This step suggests using a dataset's existing metadata categories to create questions of a binary nature, in other words questions which can be answered with a yes/no or true/false logic. We use this creation of a binary-analytical structure as a way to analyze some of the dataset's overall trends. In the Twitter dataset, we explore the use of hashtags (versus lack of use); the distribution of tweets on verified versus non-verified accounts; and the interaction level of these two types of accounts. Had we worked on data from the National Gallery we could have used the registered meta-data on artwork type, gender and nationality to explore the collection's representation of Danish versus international artists; paintings versus non-paintings; or artists registered as female and unknown versus artists registered as male, etc.  
 
@@ -67,7 +67,7 @@ If you want to reproduce the analysis we present below, using not only the overa
 1. Using one of Twitter’s APIs, e.g. their freely available so-called "Essential" API which we used to retrieve the dataset used in the example (see more about APIs this section to the [Introduction to Populating a Website with API Data](https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api)). This link will take you to [Twitter's API options](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api) 
 2. Using the [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) from the Programming Historian. But rather than choosing a CSV output, choose a JSON.
 
-In R, you work with packages, each adding numerous functionalities to the core functions of R. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this section of lesson [Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the `library()` function as below:
+In R, you work with packages, each adding numerous functionalities to the core functions of R. Packages are often community created code, made available for reuse. When using packages you are standing on the shoulders of other coders. In this example the relevant packages are the following: rtweet, tidyverse, lubridate and jsonlite. To install packages in R see this section of lesson [Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r#package-set-up). To use the packages in R they have to be loaded with the `library()` function as below:
 
     library(rtweet)
     library(tidyverse)
@@ -89,7 +89,7 @@ information on and learning to use tidyverse see
 ### lubridate
 
 The package lubridate is used for handling different date formats in R
-and doing operations on them. The package in from the same group behind
+and doing operations on them. The package was created by the group behind
 the package “tidyverse”, but is not a core package in the “tidyverse”.[^2]
 
 
@@ -119,13 +119,13 @@ the `search_tweets()`-function from the “rtweet”-package to import
 twitter data into your R environment. This will return up to 18000
 tweets from the past 10 days. The data will be structured in the form of a "dataframe". Much like a spreadsheet, a dataframe organizes your data into a 2-dimensional table of rows and columns.
 By copying the code chunk below, you will be able to generate a
-dataframe based on a free-text search on the term “sesamestreet” to follow our example.
+dataframe based on a free-text search on the term “sesamestreet” to follow our example. The *q* parameter represents your query. This is were you type what content you are interested in. The *n* parameter tells how many tweets to return.
 
     sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
 
 
 # Step 1: Chronological exploration of a Dataset 
-Exploring a dataset’s chronological dimensions can facilitate the first analytical review of your data. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around *Sesame Street*), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing as to it significance. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could also relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collections according to different periods in art history to which are represented the most or the least. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3, because it will give you an idea of how a specific datapoint's relation to the chronology of the entire dataset compares to that of all the other datapoints.
+Exploring a dataset’s chronological dimensions can facilitate the first analytical review of your data. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around *Sesame Street*), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing as to it significance. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could also relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collections according to different periods in art history, in order to establish which periods are more or less represented in the National Gallery dataset. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3, because it will give you an idea of how a specific datapoint's relation to the chronology of the entire dataset compares to that of all the other datapoints.
 
 
 ## Example of a dataset's timely dispersion: Twitter data
@@ -198,7 +198,7 @@ is told that it should extract the date from the "created\_at"-column.
 Lastly we use the `count`-function from the "tidyverse"-package to count
 TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
 
-Please beware that your data will look slightly different, as it was not collected on the same date as ours and the conversation about *Sesame Street* represented in your dataset will be different from what it was just prior to 13th December where we collected the data for our example.
+Please be aware that your data will look slightly different, as it was not collected on the same date as ours and the conversation about *Sesame Street* represented in your dataset will be different from what it was just prior to 13th December when we collected the data for our example.
 
 
     sesamestreet_data%>% 
@@ -224,11 +224,11 @@ To pick up where we left in the previous code chunk, we continue with the
 This function is told that it should put date on the x-axis and the
 counted number of TRUE/FALSE-values on the y-axis. The next line of the
 creation of the visualisation is `geom_line()`,where we specify
-"linetype=has\_sesame\_ht", thus creating two lines for; one for
+"linetype=has\_sesame\_ht", which creates two lines in the visualisation, one for 
 TRUE and one for FALSE.
 
 The lines of code following the `geom_line()` argument tweaks the
-aesthetics of the visualisation. `scale_linetype()`tells R, what the
+aesthetics of the visualisation. In this context aesthetics desribes the visual representation of data in your visualisation.  `scale_linetype()`tells R what the
 lines should be labeled as. `scale_x_date()` and `scale_y_continuous()`
 changes the looks of the x- and y-axis, respectively. At last, the
 `labs()` and `guides()` arguments are used to create descriptive text on
@@ -270,7 +270,7 @@ result.
 Using the pipe `%>%` you pass the data on downwards - the data is
 flowing through the pipe like water! Here you pour the data to the
 `count`-function and ask it to count on the column "verified" that holds
-two values. Either it has "TRUE", then the account is verfied, or it
+two values. Either it has "TRUE", then the account is verified, or it
 has "FALSE" - then it isn’t.
 
 So now you have the count - but it would make more sense to have these
@@ -389,9 +389,9 @@ like the previous bar charts, but the difference here is `facet_wrap`,
 which creates three bar charts for each type of interaction:
 
 # Step 3: Reproducible and Systematic Selection of datapoints for Close Reading
-One of the great advantages of combining close and distant reading is the possibility it presents for making a systematic and reproducible selection of datapoints for close reading. When you have explored your dataset with two different kinds of distant readings in step 1 and step 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to further unpack and explore interesting trends in your data and chosen phenomena, or other features of interest, to investigate in depth. 
+One of the great advantages of combining close and distant reading is the possibility it presents for making a systematic and reproducible selection of datapoints for close reading. When you have explored your dataset with two different kinds of distant reading in step 1 and step 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to further unpack and explore interesting trends in your data and chosen phenomena, or other features of interest, to investigate in depth. 
 
-How many datapoints you choose to close read will be dependent on what phenomena you are researching, how much time you have, and how complex the data is. For instance, analysing individual artwork might be much more time-consuming than reading individual tweet, but it of course depends on your purpose. It is, therefore, important that you are systematic in your selection of datapoints in order to ensure compliance with your research questions. In our case, we wanted to know more about how the top-liked tweets represented *Sesame Street*; how did they talk about the show and its history, did they link to other media, and how was the show represented visually, for instance with pictures, links to videos, memes, etc? Knowing the interesting relationship between the little representation, but high interaction level of tweets from verified accounts, we wanted to do a close reading of the top 20 liked tweets not only overall, but also from the top 20 non-verified accounts to see if these were different in the way they talked about the show and its history. We chose the top 20 because this seemed like a task we could actually manage within the time we had at our disposal.   
+How many datapoints you choose to close read will be dependent on what phenomena you are researching, how much time you have, and how complex the data is. For instance, analysing individual artwork might be much more time-consuming than reading individual tweets, but it of course depends on your purpose. It is, therefore, important that you are systematic in your selection of datapoints in order to ensure compliance with your research questions. In our case, we wanted to know more about how the top-liked tweets represented *Sesame Street*; how did they talk about the show and its history, did they link to other media, and how was the show represented visually, for instance with pictures, links to videos, memes, etc? Knowing the interesting relationship between the little representation, but high interaction level of tweets from verified accounts, we wanted to do a close reading of the top 20 liked tweets not only overall, but also from the top 20 non-verified accounts to see if these were different in the way they talked about the show and its history. We chose the top 20 because this seemed like a task we could actually manage within the time we had at our disposal.   
 
 If you were working on data from the National Gallery, you might want to select the top 5 or 10 most displayed or borrowed artworks from Danish and international artists, to further investigate their differences or commonalities doing a close reading of their artists, type of artwork, motive, content, size, a period in art history, etc.  
 
@@ -404,7 +404,7 @@ tweets that are "retweets."
 
 At the top right corner of the R Studios interface, you will find your R "Global Environment" containing the dataframe *sesamestreet\_data*. By clicking the dataframe, you will be able to view the rows and columns containing your twitter data. Looking to the column "is\_retweet", you will see that this column indicates whether a tweet is a retweet by the values TRUE or FALSE. 
 
-Going back to your R Markdown, you are now able to use the `filter`-function to retain all rows stating that the tweet is not a retweet.
+Going back to your R Markdown, which is the document you are writing your code and text in, you are now able to use the `filter`-function to retain all rows stating that the tweet is not a retweet. R-markdown is a fileformat which supports R code and text.
 You then arrange the remaining tweets by the tweets’ favorite count
 which is found in the "favorite\_count" column.
 
@@ -421,7 +421,7 @@ has a total of 2435 observations (the number will vary depending on when you col
 can now read off your returned dataframe how many unique tweets your dataset contains. In our example it was 852, remember yours will vary.  
 
 Looking at the column "favorite\_count", you can now observe how many likes your top-20 lies above. In our example the top-20 had a count above 50. These numbers
-are variables that changes when you choose to reproduce this example
+are variables that change when you choose to reproduce this example
 by yourself. Be sure to check these numbers.
 
 ### Creating a new dataset of the top 20 most liked tweets (verified and non-verfied accounts)
@@ -548,7 +548,7 @@ You are now ready to copy the URL's from the dataframe and inspect the individua
 # Tips for working with Twitter Data
 As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data that have not been collected with the `rtweet`-package. 
 
-If you have collected your data by following the lesson [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) you will discover that the date of tweets is shown in a way, which is noncompatible with the code from this lesson. To make the code compatible with data from *Beginner's Guide to Twitter Data* the date column has to be manipulated with regular expressions. These are quite complex and are used to tell the computer what part of the text in the column is to be understood as day, month, year and time of day:
+If you have collected your data by following the lesson [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) you will discover that the date of tweets is shown in a way which is noncompatible with the code from this lesson. To make the code compatible with data from *Beginner's Guide to Twitter Data* the date column has to be manipulated with regular expressions. These are quite complex and are used to tell the computer what part of the text in the column is to be understood as day, month, year and time of day:
 
     df %>% 
      mutate(date = str_replace(created_at, "^[A-Z][a-z]{2} ([A-Z][a-z]{2}) (\\d{2}) (\\d{2}:\\d{2}:\\d{2}) \\+0000 (\\d{4})",
