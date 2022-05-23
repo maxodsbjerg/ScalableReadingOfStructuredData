@@ -504,13 +504,13 @@ been produced by verified accounts.
 
 Here you can observe how many of the total 2435 tweets that were not retweets and were created by non-verified accounts. In our example the count was 809. However, this number will not be the same, in your case. 
 
-Looking again at the "favorite\_count" column, you can now observe how many likes you top-20 lies above. In our example the top-20 tweets from non-verified accounts had a count above 15. This time, 2 tweets share the 20th and 21th place. In this case you
+Looking again at the "favorite\_count" column, you now have to look for number 20 on the list of likes (the top-20 most liked tweet). Observe how many likes this tweet has and set the "favorite_count" to that value. In our example the top-20 tweets from non-verified accounts had a count above 15. This time, 2 tweets share the 20th and 21th place. In this case you
 therefore get the top 21 most liked tweets for this analysis.
 
     sesamestreet_data %>% 
       filter(is_retweet == FALSE) %>%
       filter(verified == FALSE) %>%
-      filter(favorite_count > 8) %>% 
+      filter(favorite_count > 15) %>% 
       arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
       
 You can now filter tweets that have been liked more than 15 times, and
