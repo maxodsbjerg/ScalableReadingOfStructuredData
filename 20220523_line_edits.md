@@ -1,40 +1,40 @@
 # Easy to correct:
-l. 52 -- 'This step suggests a chronological exploration of a dataset.' -- delete, it just repeats the header.
+l. 52 -- 'This step suggests a chronological exploration of a dataset.' -- delete, it just repeats the header. = Line deleted
 
-l. 66 -- add a small, inline explanation of what 'packages' are.
+l. 66 -- add a small, inline explanation of what 'packages' are. = More explanation added
 
-l. 88 -- 'The package in from the same group' -> 'The package [comes|is|was created by] from the same group...' [typo]
+l. 88 -- 'The package in from the same group' -> 'The package [comes|is|was created by] from the same group...' [typo] = typo fixed
 
-l. 120 -- add a comment to the code, explaining what the function parameters are
+l. 120 -- add a comment to the code, explaining what the function parameters are = parameters are now described
 
-l. 124 -- 'according to different periods in art history to which are represented the most or the least' -- a little confusing, rephrase. Perhaps: '...according to different periods in art history, in order to establish which periods are more or less represented in the National Gallery dataset'
+l. 124 -- 'according to different periods in art history to which are represented the most or the least' -- a little confusing, rephrase. Perhaps: '...according to different periods in art history, in order to establish which periods are more or less represented in the National Gallery dataset' = wording changed
 
-l. 195 -- 'beware' -> 'be aware'
+l. 195 -- 'beware' -> 'be aware' = Updated
 
-l. 195 -- 'where we collected' -> 'when we collected'
+l. 195 -- 'where we collected' -> 'when we collected' = updated
 
 
-l. 205 -- 'thus creating two lines for;' -> 'which creates two lines in the visualisation, one for...'
+l. 205 -- 'thus creating two lines for;' -> 'which creates two lines in the visualisation, one for...' = updated
 
-l. 209 -- in-line explanation of what 'aesthetics' are in this context
+l. 209 -- in-line explanation of what 'aesthetics' are in this context = aesthetics are now described
 
-l.209 -- 'tells R, what the' -> 'tells R what the'
+l.209 -- 'tells R, what the' -> 'tells R what the' = comma removed 
 
 ll. 245-150 -- explanation of the pipe operator should really come in the first coding section, particularly as you note that 'once you get a hold of this idea the remainder of the data processing will be easier to read and understand'
 
-l. 255 -- 'verfied' -> 'verified'
+l. 255 -- 'verfied' -> 'verified' = DONE
 
 ll. 367-276 -- more detailed explanation of plot construction would be good
 
-l. 382 -- 'two different kinds of distant readings' -> 'two different kinds of distant reading'
+l. 382 -- 'two different kinds of distant readings' -> 'two different kinds of distant reading' = DONE
 
-l. 384 -- 'reading individual tweet' -> 'reading individual tweets'
+l. 384 -- 'reading individual tweet' -> 'reading individual tweets' = DONE
 
-l. 397 -- First mention of R Markdown -- needs an explanation and a reasoning
+l. 397 -- First mention of R Markdown -- needs an explanation and a reasoning = Works
 
-l. 414 -- 'are variables that changes' -> 'are variables that change'
+l. 414 -- 'are variables that changes' -> 'are variables that change' = DONE
 
-l. 540 -- 'the date of tweets is shown in a way, which is' -> 'the date of tweets is shown in a way which is'
+l. 540 -- 'the date of tweets is shown in a way, which is' -> 'the date of tweets is shown in a way which is' = DONE
 
 # Needs discussion
 
