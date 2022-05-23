@@ -446,13 +446,14 @@ To create a quick overview of our new dataset, you use the
 wish to inspect. In this case, you wish to isolate the columns
 favorite\_count, screen\_name, verified and text.
 
-You then arrange them after their "favorite\_count" value by using the
-`arrange`-function.
 
     sesamestreet_data_favorite_count_over_50 %>% 
       select(favorite_count, screen_name, verified, text) %>% 
       arrange(desc(favorite_count))
 (Output removed because of privacy reasons) 
+
+You then arrange them after their "favorite\_count" value by using the
+`arrange`-function.
 
 This code chunk returns a dataframe containing the previously stated
 values. It is therefore much easier to inspect, than looking though the
@@ -489,33 +490,33 @@ your machine.
 You now wish to see the top 20 most liked tweets by non-verified
 accounts.
 
-To do this, you follow the same workflow as before, but in our first
-code chunk, you include an extra `filter`-function from the
-"dplyr"-package which retains all rows with the value FALSE in the
-verified column, thereby removing all tweets from our data which have
-been produced by verified accounts.
-
     sesamestreet_data %>% 
       filter(is_retweet == FALSE) %>%
       filter(verified == FALSE) %>% 
       arrange(desc(favorite_count))
 (Output removed because of privacy reasons)
 
+To do this, you follow the same workflow as before, but in our first
+code chunk, you include an extra `filter`-function from the
+"dplyr"-package which retains all rows with the value FALSE in the
+verified column, thereby removing all tweets from our data which have
+been produced by verified accounts.
+
 Here you can observe how many of the total 2435 tweets that were not retweets and were created by non-verified accounts. In our example the count was 809. However, this number will not be the same, in your case. 
 
 Looking again at the "favorite\_count" column, you can now observe how many likes you top-20 lies above. In our example the top-20 tweets from non-verified accounts had a count above 15. This time, 2 tweets share the 20th and 21th place. In this case you
 therefore get the top 21 most liked tweets for this analysis.
-
-You can now filter tweets that have been liked more than 15 times, and
-arrange them from the most liked to the least, and create a new
-dataset in our Global Environment called
-*sesamestreet\_data\_favorite\_count\_over\_15\_non\_verified*.
 
     sesamestreet_data %>% 
       filter(is_retweet == FALSE) %>%
       filter(verified == FALSE) %>%
       filter(favorite_count > 8) %>% 
       arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
+      
+You can now filter tweets that have been liked more than 15 times, and
+arrange them from the most liked to the least, and create a new
+dataset in our Global Environment called
+*sesamestreet\_data\_favorite\_count\_over\_15\_non\_verified*.
 
 ### Inspecting our new dataframe (only non-verified)
 
