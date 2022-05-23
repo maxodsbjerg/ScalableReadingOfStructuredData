@@ -20,11 +20,11 @@ l. 209 -- in-line explanation of what 'aesthetics' are in this context = aesthet
 
 l.209 -- 'tells R, what the' -> 'tells R what the' = comma removed 
 
-ll. 245-150 -- explanation of the pipe operator should really come in the first coding section, particularly as you note that 'once you get a hold of this idea the remainder of the data processing will be easier to read and understand'
+**ll. 245-150 -- explanation of the pipe operator should really come in the first coding section, particularly as you note that 'once you get a hold of this idea the remainder of the data processing will be easier to read and understand'**
 
 l. 255 -- 'verfied' -> 'verified' = DONE
 
-ll. 367-276 -- more detailed explanation of plot construction would be good
+**ll. 367-276 -- more detailed explanation of plot construction would be good**
 
 l. 382 -- 'two different kinds of distant readings' -> 'two different kinds of distant reading' = DONE
 
