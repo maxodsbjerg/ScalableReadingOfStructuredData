@@ -196,7 +196,7 @@ date, but also the hour, minute and second of the tweet. This is
 obtained with the `date()`-function from the "lubridate"-packages, which
 is told that it should extract the date from the "created\_at"-column.  
 Lastly we use the `count`-function from the "tidyverse"-package to count
-TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
+TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The pipe function (`%>%`) is used to chain code commands together and is further explained later, when we are chaining multiple commands together
 
 Please be aware that your data will look slightly different, as it was not collected on the same date as ours and the conversation about *Sesame Street* represented in your dataset will be different from what it was just prior to 13th December when we collected the data for our example.
 
